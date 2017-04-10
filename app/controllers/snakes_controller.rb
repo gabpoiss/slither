@@ -6,7 +6,7 @@ class SnakesController < ApplicationController
   end
 
   def show
-    @snake = Snake.find(params[:snake_id])
+    @snake = Snake.find(params[:id])
   end
 
   def new
