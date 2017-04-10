@@ -9,14 +9,12 @@
  <!-- Right Navigation -->
  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-   <!-- Search form -->
-
-   <!-- Text link -->
-   <a href="" target="_blank" class="navbar-wagon-item navbar-wagon-link">Sign In</a>
-
-   <!-- Text link -->
-   <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-
+  <% if current_user %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% end %>
    <!-- Notification link-->
    <a href="" target="_blank class="navbar-wagon-item navbar-wagon-link">
      <div class="badge-container">
