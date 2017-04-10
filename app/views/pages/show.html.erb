@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+
+      <div class="text-center">
+        <h1>Show A Snake Public</h1>
+        <h2><%= @snake.name %></h2>
+        <h3><%= @snake.breed %></h3>
+        <h3><%= @snake.sex %></h3>
+        <h3><%= @snake.available %></h3>
+        <h3><%= @snake.price %></h3>
+        <%= link_to "See more snakes", snakes_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
