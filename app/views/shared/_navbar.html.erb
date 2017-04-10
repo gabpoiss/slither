@@ -15,7 +15,7 @@
    <a href="" target="_blank" class="navbar-wagon-item navbar-wagon-link">Sign In</a>
 
    <!-- Text link -->
-   <a href="" target="_blank" class="navbar-wagon-item navbar-wagon-link">Sign out</a>
+   <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
    <!-- Notification link-->
    <a href="" target="_blank class="navbar-wagon-item navbar-wagon-link">
