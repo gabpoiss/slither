@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/bookings", to: "bookings#user_show", as: "user_bookings"
   get "/users/:user_id/snakes", to: "snakes#user_show", as: "user_snakes"
 
+  mount Attachinary::Engine => "/attachinary"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
