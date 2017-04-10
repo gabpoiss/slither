@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do
+  Snake.create(name: Faker::Pokemon.name, breed: Faker::Cat.breed, sex:  "male", available: true, price: Faker::Commerce.price)
+end
