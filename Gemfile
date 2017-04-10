@@ -21,6 +21,8 @@ gem 'autoprefixer-rails'
 # Faker
 gem 'faker'
 
+gem 'cloudinary'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
