@@ -11,9 +11,12 @@
     <%=  favicon_link_tag("snake----16-214285_owk7kw.png") %>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "shared/navbar" %>
+<!--     <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
+
+
