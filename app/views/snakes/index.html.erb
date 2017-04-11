@@ -4,7 +4,7 @@
 
       <div class="text-center">
       <h1>Index All Snakes Public</h1>
-        <ul>
+        <ul class ="ul-no-bullets">
           <% @snakes.each do |snake| %>
             <li><%= link_to snake.name, snake_path(snake) %></li>
           <% end %>
