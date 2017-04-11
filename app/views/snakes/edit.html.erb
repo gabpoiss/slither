@@ -1,8 +1,8 @@
 <div class="new-snake-form">
   <div>
-    <h2>Add Your Snake</h2>
+    <h2>Edit Your Snake</h2>
   </div>
-  <%= simple_form_for Snake.new do |i| %>
+  <%= simple_form_for @snake do |i| %>
     <%= i.error_notification %>
     <%= i.input :name, required: true, autofocus: true %>
     <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
@@ -12,4 +12,5 @@
     <%= i.input :photo, as: :attachinary %>
     <%= i.submit %>
   <% end %>
+  <%= link_to "Delete your snake", snake_path(@snake), class: "btn btn-danger", method: :delete %>
 </div>

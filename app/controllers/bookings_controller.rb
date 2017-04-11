@@ -5,6 +5,8 @@ class BookingsController < ApplicationController
     user = snake.user
     if user == current_user
       @bookings = Booking.where(snake: snake)
+    else
+      redirect_to snake_path(snake)
     end
   end
 
@@ -12,7 +14,7 @@ class BookingsController < ApplicationController
     snake = Snake.find(params[:snake_id])
     user = snake.user
     if user == current_user
-      @booking = Bookind.find(params[:id])
+      @booking = Booking.find(params[:id])
     end
   end
 
@@ -21,11 +23,15 @@ class BookingsController < ApplicationController
 
   def create
     snake = Snake.find(params[:snake_id])
-    new_booking = Booking.new(booking_params, confirmed: nil)
+    new_booking = Booking.new(booking_params)
+    new_booking.confirmed = nil
     new_booking.snake = snake
     new_booking.user = current_user
     if new_booking.save
-      redirect_to snake_booking_path(new_booking)
+      # once the the snake book page has been built out.
+      # redirect_to snake_booking_path(new_booking)
+      # until then:
+      redirect_to snake_path(snake)
     else
       redirect_to snake(snake)
     end
@@ -44,11 +50,11 @@ class BookingsController < ApplicationController
     snake_owner = Snake.find(params[:snake_id]).user
     booker = booking.user
     if snake_owner == current_user
-      booking.edit(confirmed: params[:booking][:confirmed])
+      booking.update(confirmed: true)
     elsif booker = current_user
-      booking.edit(booking_params)
+      booking.update(booking_params)
     end
-    if booking.save
+    if booking.valid?
       redirect_to snake_booking_path(booking)
     else
       redirect_to edit_snake_path(booking)
@@ -57,8 +63,9 @@ class BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    if booking.user == current_user
+    if booking.snake.user == current_user
       booking.destroy
+      redirect_to snake_bookings_path
     end
   end
 

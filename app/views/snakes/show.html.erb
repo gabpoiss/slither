@@ -1,16 +1,62 @@
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-
-      <div class="text-center">
-        <h1>Show A Snake Public</h1>
-        <h2><%= @snake.name %></h2>
-        <h3><%= @snake.breed %></h3>
-        <h3><%= @snake.sex %></h3>
-        <h3><%= @snake.available %></h3>
-        <h3><%= @snake.price %></h3>
-        <%= link_to "See more snakes", snakes_path, class: "btn btn-success" %>
+<div class="snake-show-wrapper">
+  <div class="snake-photo-name-wrapper">
+    <div class="snake-photo-name">
+      <div class="snake-photo">
+        <% if @snake.photo? %>
+          <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill %>
+        <% end %>
+      </div>
+      <div class="snake-name">
+        <h1><%= @snake.name %></h1>
       </div>
     </div>
   </div>
+  <div class="snake-details-wrapper">
+    <div class="snake-details-box">
+      <div class="snake-attr-wrapper">
+        <div class="snake-attr-rows">
+          <p>Breed:</p>
+          <p id="snake-breed"><%= @snake.breed %></p>
+          <% if @snake.breed.length > 17 %>
+            <style>
+              #snake-breed {
+                font-size: 20px;
+              }
+            </style>
+          <% elsif @snake.breed.length > 10 %>
+            <style>
+              #snake-breed {
+                font-size: 25px;
+              }
+            </style>
+          <% end %>
+        </div>
+        <div class="snake-attr-rows">
+          <p>Sex:</p>
+          <p><%= @snake.sex %></p>
+        </div>
+        <div class="snake-attr-rows">
+          <p>Rate:</p>
+          <p><%= @snake.price %></p>
+        </div>
+      </div>
+      <div class="snake-show-button-wrapper">
+        <div class="snake-show-btn-box">
+          <% if @snake.user == current_user %>
+            <%= link_to "Edit your snake", edit_snake_path, class: "btn btn-success" %>
+            <%= link_to "View your snake's bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
+          <% elsif current_user %>
+            <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+          <% else %>
+            <h3>Log in or sign up to book snakes</h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="see-more-snakes-button">
+    <%= link_to "See more snakes", snakes_path, class: "btn btn-danger" %>
+  </div>
 </div>
+
+
