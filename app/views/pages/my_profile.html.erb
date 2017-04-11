@@ -10,5 +10,7 @@
       <p class="name"><%= @user.first_name %> <%= @user.last_name %></p>
       <p class="bio"><%= @user.bio %></p>
     </div>
+  <%= link_to "My Snakes", user_snakes_path(@user), class: "btn btn-danger" %>
+  <%= link_to "My Bookings", user_bookings_path(@user), class: "btn btn-danger" %>
   </div>
 </div>

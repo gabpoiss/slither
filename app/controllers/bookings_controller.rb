@@ -1,12 +1,12 @@
 class BookingsController < ApplicationController
 
   def index
-    snake = Snake.find(params[:snake_id])
-    user = snake.user
-    if user == current_user
-      @bookings = Booking.where(snake: snake)
+    @snake = Snake.find(params[:snake_id])
+    @user = @snake.user
+    if @user == current_user
+      @bookings = Booking.where(snake: @snake)
     else
-      redirect_to snake_path(snake)
+      redirect_to snake_path(@snake)
     end
   end
 
@@ -66,6 +66,13 @@ class BookingsController < ApplicationController
     if booking.snake.user == current_user
       booking.destroy
       redirect_to snake_bookings_path
+    end
+  end
+
+  def user_show
+    @user = User.find(params[:user_id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
     end
   end
 

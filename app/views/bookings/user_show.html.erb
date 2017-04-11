@@ -1,0 +1,16 @@
+<%= link_to "Return to Profile", user_path(@user), class: "btn btn-danger" %>
+
+<h1>Your Bookings</h1>
+
+<% Booking.where(user_id: @user.id).each do |i| %>
+  <p>Booking: <%= link_to i.snake.name, snake_booking_path(@user, i) %></p>
+  <% if i.confirmed == true %>
+    <% booking_status = "Confirmed" %>
+  <% elsif i.confirmed == nil %>
+    <% booking_status = "Pending" %>
+  <% else %>
+    <% booking_status = "DENIED" %>
+  <% end %>
+  <p>Status: <%= booking_status %></p>
+  <br>
+<% end %>
