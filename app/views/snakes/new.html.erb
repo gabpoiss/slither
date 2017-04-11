@@ -1,0 +1,14 @@
+<div class="new-snake-form">
+  <div>
+    <h2>Add Your Snake</h2>
+  </div>
+  <%= simple_form_for Snake.new do |i| %>
+    <%= i.error_notification %>
+    <%= i.input :name, required: true, autofocus: true %>
+    <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
+    <%= i.input :breed, required: true, autofocus: true %>
+    <%= i.input :price, required: true, autofocus: true %>
+    <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent imediately" %>
+    <%= i.submit %>
+  <% end %>
+</div>

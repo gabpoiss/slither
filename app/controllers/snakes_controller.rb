@@ -15,10 +15,9 @@ class SnakesController < ApplicationController
   def create
     @new_snake = Snake.new(snake_params)
     @new_snake.user = current_user
+    # raise
     if @new_snake.save
       redirect_to snake_path(@new_snake)
-    else
-      redirect_to new_snake_path
     end
   end
 
