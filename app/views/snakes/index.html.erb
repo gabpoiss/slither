@@ -2,6 +2,11 @@
     <div class="row">
       <div class="col-xs-12">
 
+      <%= form_tag(snakes_path, method: :get) do %>
+      <%= text_field_tag :term, params[:term] %>
+      <%= submit_tag 'Catch a snake!', name: nil %>
+      <% end %>
+
       <div class="text-center">
       <h1>Index All Snakes Public</h1>
         <ul class ="ul-no-bullets">
