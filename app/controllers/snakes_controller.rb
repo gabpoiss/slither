@@ -2,7 +2,7 @@ class SnakesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @snakes = Snake.all
+    @snakes = Snake.order(name: :asc)
   end
 
   def show
