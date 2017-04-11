@@ -15,6 +15,7 @@
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
     <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+    <a href="/snakes/new" class="navbar-wagon-item navbar-wagon-button btn">Add a snake</a>
   <% else %>
     <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
