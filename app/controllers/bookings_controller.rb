@@ -11,8 +11,8 @@ class BookingsController < ApplicationController
   end
 
   def show
-    snake = Snake.find(params[:snake_id])
-    user = snake.user
+    @snake = Snake.find(params[:snake_id])
+    user = @snake.user
     if user == current_user
       @booking = Booking.find(params[:id])
     end
