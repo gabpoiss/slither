@@ -50,11 +50,11 @@ class BookingsController < ApplicationController
     snake_owner = Snake.find(params[:snake_id]).user
     booker = booking.user
     if snake_owner == current_user
-      booking.edit(confirmed: params[:booking][:confirmed])
+      booking.update(confirmed: true)
     elsif booker = current_user
-      booking.edit(booking_params)
+      booking.update(booking_params)
     end
-    if booking.save
+    if booking.valid?
       redirect_to snake_booking_path(booking)
     else
       redirect_to edit_snake_path(booking)
@@ -63,8 +63,9 @@ class BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    if booking.user == current_user
+    if booking.snake.user == current_user
       booking.destroy
+      redirect_to snake_bookings_path
     end
   end
 
