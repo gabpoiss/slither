@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
+User.create(email: "martingianna@gmail.com", password: "123456", username: "martingianna", first_name: "martin", last_name: "gianna")
+User.create(email: "bobby@gmail.com", password: "123456", username: "billybob", first_name: "billy", last_name: "bob")
+
+
+7.times do
   Snake.create(name: Faker::Pokemon.name, breed: Faker::Cat.breed, sex:  "Male", available: true, price: Faker::Commerce.price, user_id: 1)
+end
+
+7.times do
+  Snake.create(name: Faker::Pokemon.name, breed: Faker::Cat.breed, sex:  "Male", available: true, price: Faker::Commerce.price, user_id: 2)
 end
