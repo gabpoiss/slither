@@ -45,6 +45,6 @@ class SnakesController < ApplicationController
   end
 
   def snake_params
-    params.require(:snake).permit(:name, :breed, :sex, :available, :price)
+    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo)
   end
 end
