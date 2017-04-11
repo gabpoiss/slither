@@ -51,6 +51,13 @@ class SnakesController < ApplicationController
     end
   end
 
+  def user_show
+    @user = User.find(params[:user_id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
+
   def snake_params
     params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo)
   end

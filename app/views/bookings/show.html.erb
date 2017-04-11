@@ -1,10 +1,30 @@
-<%= @booking.from %>
-<%= @booking.until %>
-<% if @booking.confirmed == true %>
-  <p>This Booking Has Been Confirmed By You</p>
-<% elsif @booking.confirmed == nil %>
-  <%= link_to "Confirm Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :patch %>
-  <%= link_to "Deny Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :delete %>
-<% else %>
-  <p>You shouldn't be seeing this</p>
+<br>
+<br>
+
+<%= link_to "Back to list of bookings", snake_bookings_path(@booking.snake), class: "btn btn-danger" %>
+
+<br>
+<br>
+
+<% if @booking.snake.user == current_user %>
+  <% if @booking.confirmed == true %>
+  <p><%= link_to @booking.user.username, user_path(@booking.user) %> has booked <%= @booking.snake.name %></p>
+  <p>From: <%= @booking.from %></p>
+  <p>Until: <%= @booking.until %></p>
+  <% elsif @booking.confirmed == nil %>
+    <%= link_to "Confirm Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :patch %>
+    <%= link_to "Deny Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :delete %>
+  <% else %>
+    <p>You shouldn't be seeing this</p>
+  <% end %>
+<% elsif @booking.user%>
+  <% if @booking.confirmed == true %>
+    <p>Your booking of <%= @booking.snake.name %> has been confirmed</p>
+    <p>From: <%= @booking.from %></p>
+    <p>Until: <%= @booking.until %></p>
+  <% elsif @booking.confirmed == nil %>
+    <p>Your booking of <%= @booking.snake.name %> has yet to be confirmed by <%= link_to @booking.snake.user.username, user_path(@booking.snake.user) %></p>
+  <% else %>
+    <p>You shouldn't be seeing this</p>
+  <% end %>
 <% end %>

@@ -1,0 +1,9 @@
+<%= link_to "Return to Profile", user_path(@user), class: "btn btn-danger" %>
+
+<h1>Your Snakes</h1>
+
+<% @user.snakes.each do |i| %>
+  <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
+  <p>Number of bookings: <%= i.bookings.count %></p>
+  <br>
+<% end %>

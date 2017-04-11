@@ -1,16 +1,29 @@
+<br>
+<br>
+
+<%= link_to "Back to snake", snake_path(@snake), class: "btn btn-danger" %>
+
+<br>
+<br>
+
 <% if @bookings.empty? %>
   <h3>This snake has no bookings</h3>
 <% end %>
 
 <% @bookings.each do |i| %>
+  <br>
   <%= i.from %>
   <%= i.until %>
   <% if i.confirmed == true %>
-    <p>Confirmed</p>
+    <p><%= link_to i.user.username, user_path(i.user) %> has booked <%= i.snake.name %></p>
+    <p>From: <%= i.from %></p>
+    <p>Until: <%= i.until %></p>
   <% elsif i.confirmed == nil %>
     <p>Pending you confirmation</p>
   <% else %>
     <p>You shouldn't be seeing this</p>
   <% end %>
   <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
+  <br>
+  <br>
 <% end %>
