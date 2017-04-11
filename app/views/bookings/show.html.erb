@@ -1,0 +1,10 @@
+<%= @booking.from %>
+<%= @booking.until %>
+<% if @booking.confirmed == true %>
+  <p>This Booking Has Been Confirmed By You</p>
+<% elsif @booking.confirmed == nil %>
+  <%= link_to "Confirm Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :patch %>
+  <%= link_to "Deny Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", medthod: :delete %>
+<% else %>
+  <p>You shouldn't be seeing this</p>
+<% end %>

@@ -1,0 +1,16 @@
+<% if @bookings.empty? %>
+  <h3>This snake has no bookings</h3>
+<% end %>
+
+<% @bookings.each do |i| %>
+  <%= i.from %>
+  <%= i.until %>
+  <% if i.confirmed == true %>
+    <p>Confirmed</p>
+  <% elsif i.confirmed == nil %>
+    <p>Pending you confirmation</p>
+  <% else %>
+    <p>You shouldn't be seeing this</p>
+  <% end %>
+  <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
+<% end %>

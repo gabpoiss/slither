@@ -5,6 +5,8 @@ class BookingsController < ApplicationController
     user = snake.user
     if user == current_user
       @bookings = Booking.where(snake: snake)
+    else
+      redirect_to snake_path(snake)
     end
   end
 
@@ -12,7 +14,7 @@ class BookingsController < ApplicationController
     snake = Snake.find(params[:snake_id])
     user = snake.user
     if user == current_user
-      @booking = Bookind.find(params[:id])
+      @booking = Booking.find(params[:id])
     end
   end
 
