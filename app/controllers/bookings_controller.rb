@@ -11,10 +11,12 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @snake = Snake.find(params[:snake_id])
-    user = @snake.user
-    if user == current_user
-      @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    snake = Snake.find(params[:snake_id])
+    snake_owner = snake.user
+    guy_booking_the_snake = @booking.user
+    unless current_user == guy_booking_the_snake || current_user == snake_owner
+      redirect_to snakes_path
     end
   end
 
