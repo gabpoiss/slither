@@ -15,22 +15,25 @@ class SnakesController < ApplicationController
   def create
     @new_snake = Snake.new(snake_params)
     @new_snake.user = current_user
+    # raise
     if @new_snake.save
       redirect_to snake_path(@new_snake)
-    else
-      redirect_to new_snake_path
     end
   end
 
   def edit
-    if Snake.find(params[:id]).user == current_user
+    @snake = Snake.find(params[:id])
+    if @snake.user == current_user
       @snake = Snake.find(params[:id])
+    else
+      redirect_to snake_path(@snake)
     end
   end
 
   def update
-    @snake = Snake.edit(snake_params)
-    if @snake.save
+    @snake = Snake.find(params[:id])
+    @snake.update(snake_params)
+    if @snake.valid?
       redirect_to snake_path(@snake)
     else
       redirect_to edit_snake(@snake)
@@ -41,11 +44,14 @@ class SnakesController < ApplicationController
     if Snake.find(params[:id]).user == current_user
       @snake = Snake.find(params[:id])
       @snake.destroy
-      redirect_to user_snake_path(current_user)
+      # Redirect to list of user's snakes once that view has been built
+      # redirect_to user_snake_path(current_user)
+      # For now we'll redirect back to the main index of snakes
+      redirect_to snakes_path
     end
   end
 
   def snake_params
-    params.require(:snake).permit(:name, :breed, :sex, :available, :price)
+    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo)
   end
 end

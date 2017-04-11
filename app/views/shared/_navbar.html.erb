@@ -10,19 +10,29 @@
 <!-- Right Navigation -->
 <div class="navbar-wagon-right hidden-xs hidden-sm">
 
- <!-- Search form -->
-
- <!-- Text link -->
- <a href="" target="_blank" class="navbar-wagon-item navbar-wagon-link">Sign In</a>
-
- <!-- Text link -->
- <a href="" target="_blank" class="navbar-wagon-item navbar-wagon-link">Sign out</a>
-
- <!-- Notification link-->
- <a href="" target="_blank class="navbar-wagon-item navbar-wagon-link">
-   <div class="badge-container">
-     <i class="fa fa-navicon"></i>
-     <div class="badge badge-green">12</div>
+  <% if current_user %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% end %>
+   <!-- Notification link-->
+   <a href="" target="_blank class="navbar-wagon-item navbar-wagon-link">
+     <div class="badge-container">
+       <i class="fa fa-navicon"></i>
+       <div class="badge badge-green">12</div>
+     </div>
+   </a>
+   <!-- Profile picture and dropdown -->
+   <div class="navbar-wagon-item">
+     <div class="dropdown">
+       <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+         <li><a href="" target="_blank">Profile</a></li>
+         <li><a href="" target="_blank">Dashboard</a></li>
+         <li><a href="" target="_blank">Log Out</a></li>
+       </ul>
+     </div>
    </div>
  </a>
  <!-- Profile picture and dropdown -->

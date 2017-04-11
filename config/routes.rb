@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  get "/users/:user_id", to: "users#show", as: "user"
+  get "/users/:user_id", to: "pages#show", as: "user"
   get "/users/:user_id/bookings", to: "bookings#user_show", as: "user_bookings"
   get "/users/:user_id/snakes", to: "snakes#user_show", as: "user_snakes"
 
