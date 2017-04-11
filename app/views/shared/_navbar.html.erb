@@ -14,7 +14,7 @@
   <% if current_user %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-       <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+    <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
   <% else %>
     <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
@@ -26,7 +26,6 @@
      <div class="badge badge-green">12</div>
    </div>
  </a>
-
 <!-- Button (call-to-action) -->
 <a href="/snakes" class="navbar-wagon-item navbar-wagon-button btn">Rent a snake</a>
 </div>
