@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   end
 
   def user_profile
+    @user = User.find(params[:user_id])
     render :user_profile
   end
 end
