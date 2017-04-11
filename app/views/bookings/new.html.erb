@@ -1,0 +1,7 @@
+<div>
+  <%= simple_form_for Booking.new, url: snake_bookings_path do |i| %>
+    <%= i.input :from %>
+    <%= i.input :until %>
+    <%= i.submit %>
+  <% end %>
+</div>

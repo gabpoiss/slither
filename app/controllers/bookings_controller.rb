@@ -21,11 +21,15 @@ class BookingsController < ApplicationController
 
   def create
     snake = Snake.find(params[:snake_id])
-    new_booking = Booking.new(booking_params, confirmed: nil)
+    new_booking = Booking.new(booking_params)
+    new_booking.confirmed = nil
     new_booking.snake = snake
     new_booking.user = current_user
     if new_booking.save
-      redirect_to snake_booking_path(new_booking)
+      # once the the snake book page has been built out.
+      # redirect_to snake_booking_path(new_booking)
+      # until then:
+      redirect_to snake_path(snake)
     else
       redirect_to snake(snake)
     end
