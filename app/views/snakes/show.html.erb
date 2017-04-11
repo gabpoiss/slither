@@ -9,6 +9,9 @@
         <h3><%= @snake.sex %></h3>
         <h3><%= @snake.available %></h3>
         <h3><%= @snake.price %></h3>
+        <h3><% if @snake.photo? %>
+          <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fit %>
+        <% end %></h3>
         <%= link_to "See more snakes", snakes_path, class: "btn btn-success" %>
       </div>
     </div>
