@@ -13,6 +13,9 @@
           <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fit %>
         <% end %></h3>
         <%= link_to "See more snakes", snakes_path, class: "btn btn-success" %>
+        <% if @snake.user == current_user %>
+          <%= link_to "Edit your snake", edit_snake_path, class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   </div>
