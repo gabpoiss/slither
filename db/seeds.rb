@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do
-  Snake.create(name: Faker::Pokemon.name, breed: Faker::Cat.breed, sex:  "male", available: true, price: Faker::Commerce.price, user_id: 1)
+  Snake.create(name: Faker::Pokemon.name, breed: Faker::Cat.breed, sex:  "Male", available: true, price: Faker::Commerce.price, user_id: 1)
 end
