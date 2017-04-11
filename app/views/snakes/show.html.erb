@@ -15,8 +15,11 @@
         <%= link_to "See more snakes", snakes_path, class: "btn btn-success" %>
         <% if @snake.user == current_user %>
           <%= link_to "Edit your snake", edit_snake_path, class: "btn btn-success" %>
-        <% else %>
+          <%= link_to "View your snake's bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
+        <% elsif current_user %>
           <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+        <% else %>
+          <h3>Log in or sign up to book snakes</h3>
         <% end %>
       </div>
     </div>
