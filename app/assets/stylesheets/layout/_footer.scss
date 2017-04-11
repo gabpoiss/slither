@@ -1,1 +1,34 @@
-// Your footer style
+footer {
+  text-align: center;
+  justify-content: center;
+  margin-top: 15px;
+  height: 25vh;
+  background-image: url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491880115/footerskin_q3uuwl.jpg');
+}
+
+.btn-social-icon {
+  color:yellow;
+  font-size: 75px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-social-icon:hover {
+  color:red;
+}
+
+.footer-text {
+  justify-content: center;
+  align-items: center;
+  color:orange;
+  font-size: 55px;
+}
+
+.footer-number {
+  color:red;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+
