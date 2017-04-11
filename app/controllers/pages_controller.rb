@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    if current_user.id == params[:user_id]
+    if current_user.id == params[:user_id].to_i
       my_profile
     else
       user_profile
@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def my_profile
+    @user = current_user
     render :my_profile
   end
 

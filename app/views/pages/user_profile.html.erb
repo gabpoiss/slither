@@ -1,1 +1,14 @@
-<h1>MINE</h1>
+<div class="user-wrapper">
+  <div class="user-box">
+    <div class="user-photo-box">
+      <% if @user.facebook_picture_url %>
+        <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="user-details-box">
+      <p class="username"><%= @user.username %></p>
+      <p class="first-name"><%= @user.first_name %> <%= @user.last_name %></p>
+      <p class="bio"><%= @user.bio %></p>
+    </div>
+  </div>
+</div>
