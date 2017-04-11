@@ -1,0 +1,71 @@
+.snake-show-wrapper {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.snake-photo-name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.snake-photo-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.snake-name {
+  h1 {
+    font-size: 100px;
+  }
+  margin-left: 15px;
+}
+
+.snake-photo {
+  img {
+    border-radius: 50%;
+  }
+}
+
+.snake-details-wrapper {
+  width: 35vw;
+  margin: 20px auto;
+}
+
+.snake-details-box {
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  padding: 10px 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.snake-attr-wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.snake-attr-rows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30px;
+}
+
+.snake-show-button-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.snake-show-btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.see-more-snakes-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+}
