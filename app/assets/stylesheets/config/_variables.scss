@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url("https://fonts.googleapis.com/css?family=Arsenal:400,700");
 
-font-family: ‘Arsenal’, sans-serif;$base-font: "Open Sans", "Helvetica", "sans-serif";
+$base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
@@ -36,23 +36,23 @@ $green: #32B796;
 $gray: #000000;
 
 $snake-backgroud-form: #F2F2F2;
-$snake-backgroud: #ffffff:
+$snake-backgroud: #ffffff;
 
 $snake-color: #EE5F5B;
 
-$snake-h1-font: "Helvetica"
+$snake-h1-font: "Helvetica";
 $snake-h1-size: 40px;
 $snake-h1-color: black;
 
-$snake-h2-font: "Helvetica"
+$snake-h2-font: "Helvetica";
 $snake-h2-size: 30px;
 $snake-h2-color: black;
 
-$snake-h3-font: "Helvetica"
-$snake-h3-size: 20px
+$snake-h3-font: "Helvetica";
+$snake-h3-size: 20px;
 $snake-h3-color: black;
 
-$snake-font-font: "Arsenal"
+$snake-font-font: "Arsenal";
 $snake-font-size: 16px;
 $snake-font-color: black;
 
