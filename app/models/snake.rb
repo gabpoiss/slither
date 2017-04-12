@@ -9,4 +9,13 @@ class Snake < ApplicationRecord
   has_attachment :photo
   # We need a validator to make sure the price is greater than zero
   # validates :price, presence: true, greater_than_or_equal_to: 0
+
+def self.search(term)
+  if term
+    where('name LIKE ?', "%#{term}%")
+  else
+    all
+  end
+end
+
 end

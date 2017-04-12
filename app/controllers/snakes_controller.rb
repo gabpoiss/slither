@@ -2,8 +2,12 @@ class SnakesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @snakes = Snake.order(name: :asc)
+    @snakes = if params[:term]
+    Snake.where('name LIKE ?', "%#{params[:term]}%")
+  else
+    Snake.order(name: :asc)
   end
+end
 
   def show
     @snake = Snake.find(params[:id])
@@ -59,6 +63,6 @@ class SnakesController < ApplicationController
   end
 
   def snake_params
-    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo)
+    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo, :term)
   end
 end
