@@ -15,20 +15,27 @@
     </div>
     <div class="show-details">
       <h3>Your Bookings</h3>
-      <% Booking.where(user_id: @user.id).each do |i| %>
-        <p>Booking: <%= link_to i.snake.name, snake_path(i.snake) %></p>
-        <% if i.confirmed == true %>
-          <% booking_status = "Confirmed" %>
-        <% elsif i.confirmed == nil %>
-          <% booking_status = "Pending" %>
-        <% else %>
-          <% booking_status = "DENIED" %>
+      <% your_bookings = Booking.where(user_id: @user.id) %>
+      <% if your_bookings.count.zero? %>
+        <br>
+        <br>
+        <p>You have no bookings!</p>
+      <% else %>
+        <% your_bookings.each do |i| %>
+          <p>Booking: <%= link_to i.snake.name, snake_path(i.snake) %></p>
+          <% if i.confirmed == true %>
+            <% booking_status = "Confirmed" %>
+          <% elsif i.confirmed == nil %>
+            <% booking_status = "Pending" %>
+          <% else %>
+            <% booking_status = "DENIED" %>
+          <% end %>
+          <p>Status: <%= booking_status %></p>
+          <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
+          <br>
+          <br>
+          <br>
         <% end %>
-        <p>Status: <%= booking_status %></p>
-        <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
-        <br>
-        <br>
-        <br>
       <% end %>
     </div>
   </div>

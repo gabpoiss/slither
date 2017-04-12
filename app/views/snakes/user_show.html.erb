@@ -15,10 +15,17 @@
     </div>
     <div class="show-details">
       <h3>Your Snakes</h3>
-      <% @user.snakes.each do |i| %>
-        <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
-        <p>Number of bookings: <%= i.bookings.count %></p>
+      <% if @user.snakes.count.zero? %>
         <br>
+        <br>
+        <p>You have no snakes!</p>
+        <%= link_to "... add some", new_snake_path, class: "btn btn-danger" %>
+      <% else %>
+        <% @user.snakes.each do |i| %>
+          <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
+          <p>Number of bookings: <%= i.bookings.count %></p>
+          <br>
+        <% end %>
       <% end %>
     </div>
   </div>
