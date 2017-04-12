@@ -1,29 +1,40 @@
-<br>
-<br>
+<div class="show-wrapper">
+  <div class="show-container">
+    <div class="picture-title">
+      <% if @snake.user == current_user %>
+        <div class="snake-tab">
+          <%= link_to "View snake", snake_path(@snake), class: "btn btn-danger edit-snake" %>
+          <%= link_to "Edit Snake", edit_snake_path(@snake), class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <% if @snake.photo %>
+        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <% end %>
+      <div class="show-name">
+        <h1><%= @snake.name %></h1>
+      </div>
+    </div>
+      <div class="snake-bookings">
+        <% if @bookings.empty? %>
+          <h3>This snake has no bookings</h3>
+        <% end %>
+        <% @bookings.each do |i| %>
+          <div class="a-booking">
+            <% if i.confirmed == true %>
+              <h2><%= link_to i.user.username, user_path(i.user) %> has booked <%= i.snake.name %></h2>
+              <p>From: <%= i.from %></p>
+              <p>Until: <%= i.until %></p>
+            <% elsif i.confirmed == nil %>
+              <p>Pending you confirmation</p>
+            <% else %>
+              <p>You shouldn't be seeing this</p>
+            <% end %>
+            <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Back to snake", snake_path(@snake), class: "btn btn-danger" %>
 
-<br>
-<br>
-
-<% if @bookings.empty? %>
-  <h3>This snake has no bookings</h3>
-<% end %>
-
-<% @bookings.each do |i| %>
-  <br>
-  <%= i.from %>
-  <%= i.until %>
-  <% if i.confirmed == true %>
-    <p><%= link_to i.user.username, user_path(i.user) %> has booked <%= i.snake.name %></p>
-    <p>From: <%= i.from %></p>
-    <p>Until: <%= i.until %></p>
-  <% elsif i.confirmed == nil %>
-    <p>Pending you confirmation</p>
-  <% else %>
-    <p>You shouldn't be seeing this</p>
-  <% end %>
-  <%= link_to "View Booking", snake_booking_path(i.snake, i), class: "btn btn-danger" %>
-  <br>
-  <br>
-<% end %>

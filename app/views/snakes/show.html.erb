@@ -1,43 +1,59 @@
-
-
-
-
-
-
-<hr>
-<hr>
-<hr>
-<% if @snake.photo? %>
-<%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill %>
-<% end %>
-<h1><%= @snake.name %></h1>
-
-<p>Breed:</p>
-<p id="snake-breed"><%= @snake.breed %></p>
-<% if @snake.breed.length > 17 %>
-<style>
-#snake-breed {
-font-size: 20px;
-}
-</style>
-<% elsif @snake.breed.length > 10 %>
-<style>
-#snake-breed {
-font-size: 25px;
-}
-</style>
-<% end %>
-<p>Sex:</p>
-<p><%= @snake.sex %></p>s">
-<p>Rate:</p>
-<p><%= @snake.price %></p>
-<% if @snake.user == current_user %>
-<%= link_to "Edit your snake", edit_snake_path, class: "btn btn-success" %>
-<%= link_to "View your snake's bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
-<% elsif current_user %>
-<%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
-<% else %>
-<h3>Log in or sign up to book snakes</h3>
-<% end %>
-<%= link_to "See more snakes", snakes_path, class: "btn btn-danger" %>
-
+<div class="show-wrapper">
+  <div class="show-container">
+    <div class="picture-title">
+      <% if @snake.user == current_user %>
+        <div class="snake-tab">
+          <%= link_to "Edit Snake", edit_snake_path(@snake), class: "btn btn-success" %>
+          <%= link_to "Snake's Bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <% if @snake.photo %>
+        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <% end %>
+      <div class="show-name">
+        <h1><%= @snake.name %></h1>
+      </div>
+    </div>
+    <div class="book-button">
+      <% unless @snake.user == current_user %>
+        <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <div class="show-details">
+      <div class="detail-div">
+        <h2>Breed:</h2>
+        <h3 id="snake-breed"><%= @snake.breed %></h3>
+        <% if @snake.breed.length > 17 %>
+          <style>
+            #snake-breed {
+              font-size: 20px;
+            }
+          </style>
+        <% elsif @snake.breed.length > 10 %>
+          <style>
+            #snake-breed {
+              font-size: 25px;
+            }
+          </style>
+        <% end %>
+      </div>
+      <div class="detail-div">
+        <h2>Sex:</h2>
+        <h3><%= @snake.sex %></h3>
+      </div>
+      <div class="detail-div">
+        <h2>Rate:</h2>
+        <h3><%= @snake.price %></h3>
+      </div>
+      <div class="detail-div">
+        <h2>Owner:</h2>
+        <h3><%= link_to @snake.user.username, user_path(@snake.user) %></h3>
+      </div>
+      <div class="booking-info">
+        <% unless @snake.user == current_user %>
+          <em><h3>Log in or sign up to book snakes</h3></em>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

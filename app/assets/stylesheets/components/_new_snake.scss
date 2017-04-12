@@ -8,6 +8,54 @@
     display: none;
   }
   h2 {
+    font-family :$snake-h2-font;
+    font-size: $snake-h2-size;
+    color: $snake-h2-color;
     margin: 0px 0px 10px 0px;
+  }
+}
+
+.edit-snake-form {
+  padding: 20px 10px;
+  abbr {
+    display: none;
+  }
+  h2 {
+    font-family :$snake-h2-font;
+    font-size: $snake-h2-size;
+    color: $snake-h2-color;
+    margin: 0px 0px 10px 0px;
+  }
+}
+
+.snake-bookings {
+  padding: 20px 10px;
+  margin: 20px auto;
+  h3 {
+    font-family :$snake-h3-font;
+    font-size: $snake-h3-size;
+    color: $snake-h3-color;
+    margin-top: 10px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.attachinary_container {
+  margin: 8px 0;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.a-booking {
+  margin-bottom: 20px;
+  h2 {
+    font-family :$snake-h2-font;
+    font-size: $snake-h2-size;
+    color: $snake-h2-color;
+    margin: 15px 0px 10px 0px;
   }
 }
