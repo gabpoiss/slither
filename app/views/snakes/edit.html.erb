@@ -1,17 +1,45 @@
-<div class="new-snake-form">
-  <div>
-    <h2>Edit Your Snake</h2>
+<div class="show-wrapper">
+  <div class="show-container">
+    <div class="picture-title">
+      <% if @snake.user == current_user %>
+        <div class="snake-tab">
+          <%= link_to "View snake", snake_path(@snake), class: "btn btn-danger edit-snake" %>
+          <%= link_to "Snake's Bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <% if @snake.photo %>
+        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <% end %>
+      <div class="show-name">
+        <h1><%= @snake.name %></h1>
+      </div>
+    </div>
+    <div class="book-button">
+      <% unless @snake.user == current_user %>
+        <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <div class="show-details">
+      <div class="edit-snake-form">
+        <div>
+          <h2>Edit Your Snake</h2>
+        </div>
+        <%= simple_form_for @snake do |i| %>
+          <%= i.error_notification %>
+          <%= i.input :name, required: true, autofocus: true %>
+          <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
+          <%= i.input :breed, required: true, autofocus: true %>
+          <%= i.input :price, required: true, autofocus: true %>
+          <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent imediately" %>
+          <%= i.input :photo, as: :attachinary %>
+          <%= i.submit %>
+        <% end %>
+        <br>
+        <br>
+        <%= link_to "Delete your snake", snake_path(@snake), class: "btn btn-danger", method: :delete %>
+      </div>
+    </div>
   </div>
-  <%= simple_form_for @snake do |i| %>
-    <%= i.error_notification %>
-    <%= i.input :name, required: true, autofocus: true %>
-    <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
-    <%= i.input :breed, required: true, autofocus: true %>
-    <%= i.input :price, required: true, autofocus: true %>
-    <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent imediately" %>
-    <%= i.input :photo, as: :attachinary %>
-    <%= i.submit %>
-  <% end %>
-  <br>
-  <%= link_to "Delete your snake", snake_path(@snake), class: "btn btn-danger", method: :delete %>
 </div>
+
+

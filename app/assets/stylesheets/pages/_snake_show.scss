@@ -1,0 +1,128 @@
+.show-wrapper {;
+  min-width: 700px;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: $snake-backgroud;
+}
+
+.show-container {
+  min-width: 300px;
+  margin-top: 180px;
+  margin-left: 180px;
+  margin-right: 180px;
+  margin-bottom: 90px;
+  background-color: $snake-backgroud-form;
+  border-radius: 5px;
+}
+
+.show-photo {
+  position: absolute;
+  border-radius: 50%;
+  top: -150px;
+  left: -150px;
+}
+
+
+.picture-title {
+  position: relative;
+  display: flex;
+  align-itmes: center;
+  justify-content: space-around;
+}
+
+html {
+  @media (max-width: 850px) {
+    .show-name {
+      margin-top: 130px;
+    }
+    .detail-div {
+      display: block;
+    }
+  }
+}
+
+html {
+  @media (max-width: 1000px) and (min-width: 850px) {
+    .show-name {
+      margin-top: 130px;
+    }
+    .show-details {
+      margin: 0 auto;
+    }
+  }
+}
+
+html {
+  @media (min-width: 1000px) {
+    .show-details {
+      h3 {
+        display: inline-block;
+      }
+      h2 {
+        display: inline-block;
+      }
+      width: 65%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.show-name {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  h1 {
+    display: inline;
+    font-family: $snake-h1-font;
+    font-size: $snake-h1-size;
+    color: $snake-h1-color;
+  }
+}
+
+.show-details {
+  max-width: 400px;
+  margin-top: 20px;
+  padding: 5px 10px;
+  padding-left: 20px;
+  h2 {
+    font-family :$snake-h2-font;
+    font-size: $snake-h2-size;
+    color: $snake-h2-color;
+    margin-top: 18px;
+  }
+  h3 {
+    margin-top: 10px;
+    font-family :$snake-h3-font;
+    font-size: $snake-h3-size;
+    color: $snake-h3-color;
+  }
+}
+
+.detail-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.book-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.snake-tab {
+  position: absolute;
+  top: -40px;
+  right: 0px;
+}
