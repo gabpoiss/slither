@@ -16,7 +16,7 @@
     <div class="show-details">
       <h3>Your Bookings</h3>
       <% Booking.where(user_id: @user.id).each do |i| %>
-        <p>Booking: <%= link_to i.snake.name, snake_booking_path(@user, i) %></p>
+        <p>Booking: <%= link_to i.snake.name, snake_path(i.snake) %></p>
         <% if i.confirmed == true %>
           <% booking_status = "Confirmed" %>
         <% elsif i.confirmed == nil %>
@@ -25,6 +25,9 @@
           <% booking_status = "DENIED" %>
         <% end %>
         <p>Status: <%= booking_status %></p>
+        <%= link_to "View Booking", snake_booking_path(@user, i), class: "btn btn-danger" %>
+        <br>
+        <br>
         <br>
       <% end %>
     </div>
