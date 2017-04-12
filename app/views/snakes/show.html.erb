@@ -53,7 +53,7 @@
       </div>
       <div class="booking-info">
         <% if current_user %>
-          <%= link_to "My Snakes", user_snakes_path(@snake), class: "btn btn-danger" %>
+          <%= link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
           <br>
         <% else %>
           <em><h3>Log in or sign up to book snakes</h3></em>
