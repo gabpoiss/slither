@@ -1,16 +1,31 @@
 <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-4">
 
-      <div class="text-center">
+      <div class="card text-center">
+      <div class="card-category">
       <h1>Index All Snakes Public</h1>
         <ul class ="ul-no-bullets">
           <% @snakes.each do |snake| %>
             <li><%= link_to snake.name, snake_path(snake) %></li>
           <% end %>
         </ul>
+        </div>
         <%= link_to "Return Home", root_path, class: "btn btn-success" %>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861468/grass-snake-snake-serpentes-natrix-80474_wkjbt9.jpg');">
+        <div class="card-category">
+          <h1>Mamba</h1>
+        </div>
+
+
+      </div>
+    </div>
+ -->
