@@ -15,8 +15,10 @@
       </div>
     </div>
     <div class="book-button">
-      <% unless @snake.user == current_user %>
+      <% if @snake.user != current_user && have_not_booked(@snake)%>
         <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% elsif have_not_booked(@snake) == false %>
+        <em><h3>You've Booked This Snake!</h3></em>
       <% end %>
     </div>
     <div class="show-details">
@@ -50,7 +52,7 @@
         <h3><%= link_to @snake.user.username, user_path(@snake.user) %></h3>
       </div>
       <div class="booking-info">
-        <% unless @snake.user == current_user %>
+        <% unless current_user %>
           <em><h3>Log in or sign up to book snakes</h3></em>
         <% end %>
       </div>
