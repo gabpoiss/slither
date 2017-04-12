@@ -5,8 +5,6 @@
   color: white;
   position: relative;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
 }
 .card-user {
   position: absolute;
@@ -43,6 +41,12 @@
 }
 .card-link:hover{
   opacity: 0.1;
+}
+
+.card-price{
+  position: absolute;
+  bottom: 10px;
+  right:10px;
 }
 
 
