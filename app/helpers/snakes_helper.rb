@@ -1,7 +1,7 @@
 module SnakesHelper
 
   def have_not_booked(snake)
-    return false unless current_user
+    return true unless current_user
     snakes_youve_booked = []
     bookings = Booking.where(user_id: current_user.id)
     bookings.each do |i|
