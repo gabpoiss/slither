@@ -21,11 +21,15 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @snake_id = params[:snake_id]
   end
 
   def create
+    date_from = Date.strptime(params[:booking][:from].gsub("/", "-"), '%m-%d-%Y')
+    date_until = Date.strptime(params[:booking][:until].gsub("/", "-"), '%m-%d-%Y')
+
     snake = Snake.find(params[:snake_id])
-    new_booking = Booking.new(booking_params)
+    new_booking = Booking.new(from: date_from, until: date_until)
     new_booking.confirmed = nil
     new_booking.snake = snake
     new_booking.user = current_user
@@ -35,7 +39,7 @@ class BookingsController < ApplicationController
       # until then:
       redirect_to snake_path(snake)
     else
-      redirect_to snake(snake)
+      redirect_to snake_path(snake)
     end
   end
 
