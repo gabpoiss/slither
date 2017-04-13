@@ -1,7 +1,7 @@
 /* Main class */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  box-shadow: 0 0 0 0;
+  background: transparent;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
@@ -44,7 +44,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $navbar_btn_color_hover;
   text-decoration: none;
 }
 
@@ -57,7 +57,7 @@
   background-color: $navbar_btn_color;
   color: white;
   font-size: 14px;
-  border: 2px solid ;
+  border: 2px solid white;
 }
 .navbar-wagon-button:hover {
   color: white;
