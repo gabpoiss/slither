@@ -1,2 +1,10 @@
 @import "home";
 @import "snake_show";
+
+.ul-no-bullets {
+  list-style-type: none;
+}
+
+textarea {
+    max-width: 100%;
+}
