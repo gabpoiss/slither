@@ -2,12 +2,23 @@ class SnakesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @snakes = if params[:term]
-    Snake.where('name LIKE ?', "%#{params[:term]}%")
-  else
-    Snake.order(name: :asc)
+    @snakes = Snake.order(price: :desc)
+      if params[:search]&& params[:search][:sex].present?
+      @snakes = @snakes.where(sex: params[:search][:sex])
+    end
+      if params[:search] && params[:search][:price].present?
+      @snakes = @snakes.where(price: params[:search][:price])
+    end
+
+
+    snake_prices = []
+    Snake.all.each do |snake|
+      snake_prices << snake.price
+    end
+
+    @prices = snake_prices.uniq.sort
+
   end
-end
 
   def show
     @snake = Snake.find(params[:id])
@@ -20,12 +31,20 @@ end
   end
 
   def new
+    snake_breeds = []
+    Snake.all.each do |snake|
+      snake_breeds << snake.breed
+    end
+
+    @breeds = snake_breeds.uniq.sort
+
+    # @breeds = Snake.limit(5).select("breed").each { |breed| puts "#{breed}" }
   end
 
   def create
     @new_snake = Snake.new(snake_params)
     @new_snake.user = current_user
-    # raise
+    @breeds = Snake.all.select("breed")
     if @new_snake.save
       redirect_to snake_path(@new_snake)
     end
