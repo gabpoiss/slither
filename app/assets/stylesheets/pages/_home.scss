@@ -18,10 +18,13 @@
   text-align: center;
   background-size: cover;
 }
-a {
-  color: white;
-  &:hover {
-    text-decoration: none;
+
+.home-card {
+  a {
     color: white;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
   }
 }
