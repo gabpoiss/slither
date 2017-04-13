@@ -5,3 +5,22 @@
 .margin-up {
   margin-top: 40px;
 }
+
+.index-banner {
+  h1{
+    font-family: $snake-h1-font;
+    font-size: 60px;
+    color: white
+  }
+  height: 25vh;
+}
+
+
+.index-title {
+  h1{
+    font-family: $snake-h1-font;
+    font-size: 60px;
+    color: $snake-h1-color;
+    margin: 50px 0;
+  }
+}

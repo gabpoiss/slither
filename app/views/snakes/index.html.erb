@@ -1,7 +1,8 @@
-<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861510/king-snake-snake-banded-red-47310_zjcc99.jpg');">
-	<div class="banner-content">
-    <h1>Snakes</h1>
-  </div>
+<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://img.clipartfox.com/41ae2ca010239733a6ee136773a2c4b1_amazon-forest-amazon-forest-clipart_1440-900.jpeg');">
+</div>
+
+<div class="text-center index-title">
+  <h1>Rent Your Snake</h1>
 </div>
 
 <div class="wrapper margin-up">
@@ -16,12 +17,12 @@
                 <%= link_to snake_path(snake) do %>
                   <div class="card temp" style="background-image: url(<%= image_url %>)">
                     <div class="card-category">
-                      <p><%= snake.name %></p>
+                      <h2><%= snake.name %></h2>
                     </div>
                     <div class="card-user">
                     </div>
                     <div class="card-description">
-                      <%= snake.breed %>
+                      <h3><%= snake.breed %></h3>
                       <p><%= snake.sex %></p>
                     </div>
                     <div class="card-price">
