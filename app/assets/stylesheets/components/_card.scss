@@ -17,13 +17,23 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 10px;
-  text-transform: uppercase;
+  h2 {
+    font-family: $snake-h2-font;
+    font-size: $snake-h2-size;
+    color: white;
+    margin: 0;
+  }
 }
 .card-description {
   position: absolute;
   bottom: 10px;
   left: 10px;
+  h3 {
+    font-family: $snake-h3-font;
+    font-size: $snake-h3-size;
+    color: white;
+    margin: 0;
+  }
 }
 .card-description h2 {
   font-size: 24px;
