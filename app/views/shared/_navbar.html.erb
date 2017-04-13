@@ -16,7 +16,10 @@
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
     <% x =  "<a href=\"/users/#{current_user.id}\">" %>
     <%= x.html_safe %>
-      <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+      <div class="badge-container">
+        <div class="badge badge-red"><%= total_notifications(current_user) unless total_notifications(current_user).zero? %></div>
+        <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+      </div>
     </a>
     <a href="/snakes/new" class="navbar-wagon-item navbar-wagon-button btn">Add a snake</a>
   <% else %>

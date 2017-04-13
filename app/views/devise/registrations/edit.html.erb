@@ -1,10 +1,15 @@
 <div class="show-wrapper">
   <div class="show-container">
     <div class="picture-title">
-      <div class="snake-tab">
-        <%= link_to "My Bookings", user_bookings_path(@user), class: "btn btn-primary" %>
-        <%= link_to "My Snakes", user_snakes_path(@user), class: "btn btn-warning" %>
-        <%= link_to "My Profile", user_path(@user), class: "btn btn-danger" %>
+      <div class="show-tabs">
+        <% my_profile = "<h3>My Profile</h3>" %>
+        <% edit_profile = "<h3>Edit Profile</h3>" %>
+        <% my_bookings = "<h3>My Bookings</h3> #{booking_responses_notifications(current_user)}" %>
+        <% my_snakes = "<h3>My Snakes #{snakes_booked_notifications(current_user)} </h3>" %>
+        <%= link_to my_profile.html_safe, user_path(@user), class: "show-tab my-tab" %>
+        <%= link_to edit_profile.html_safe, edit_user_registration_path, class: "show-tab edit-tab", id: "current-tab" %>
+        <%= link_to my_bookings.html_safe, user_bookings_path(@user), class: "show-tab my-bookings-tab" %>
+        <%= link_to my_snakes.html_safe, user_snakes_path(@user), class: "show-tab my-snakes-tab" %>
       </div>
       <% if @user.facebook_picture_url %>
         <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
@@ -36,7 +41,6 @@
         <% end %>
         <h3>Cancel my account</h3>
         <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
       </div>
     </div>
   </div>
