@@ -11,6 +11,12 @@ end
 
   def show
     @snake = Snake.find(params[:id])
+
+    if !Review.where(:user => current_user).nil?
+      @review = Review.where(:user => current_user)
+    else
+      @review = Review.new
+    end
   end
 
   def new
