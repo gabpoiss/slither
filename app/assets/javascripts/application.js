@@ -6,3 +6,4 @@
 //= require attachinary
 //= require_tree .
 
+//= require bootstrap-datepicker
