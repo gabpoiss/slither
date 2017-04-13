@@ -1,11 +1,27 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
-.ul-no-bullets {
-  list-style-type: none;
+#title {
+  font-size: 10vmin;
 }
 
-textarea {
-    max-width: 100%;
+#subtitle {
+  font-size: 5vmin;
+  opacity: 0.9;
+}
+
+.snake-card {
+  margin-top: 20px;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-size: cover;
+}
+a {
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
 }
