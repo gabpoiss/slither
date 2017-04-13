@@ -44,7 +44,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $navbar_btn_color_hover;
   text-decoration: none;
 }
 
@@ -57,7 +57,7 @@
   background-color: $navbar_btn_color;
   color: white;
   font-size: 14px;
-  border: 2px solid ;
+  border: 2px solid white;
 }
 .navbar-wagon-button:hover {
   color: white;
