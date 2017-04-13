@@ -1,0 +1,52 @@
+.show-tabs {
+  display: flex;
+  position: absolute;
+  // top: -19px;
+  left: 0px;
+  right: 0px;
+  a:hover {
+    text-decoration: none;
+  }
+  border-top-right-radius: 5px;
+}
+
+.show-buffer {
+  width: 140px;
+}
+
+.show-tab {
+  flex: 1 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: blue;
+  h3 {
+    font-family: $snake-h3-font;
+    font-size: $snake-h3-size;
+    color: $snake-h3-color;
+    margin: 0;
+  }
+  background-color: $brand-color;
+}
+.show-tab:hover {
+  background-color: $red;
+}
+
+
+.bookings-tab {
+  flex: 1 0 8%;
+  border-top-right-radius: 5px;
+}
+
+.my-snakes {
+  border-top-right-radius: 5px;
+}
+
+.my-tab {
+  border-top-left-radius: 5px;
+}
+
+#current-tab {
+  background-color: $snake-backgroud-form;
+}

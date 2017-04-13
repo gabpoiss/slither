@@ -2,9 +2,14 @@
   <div class="show-container">
     <div class="picture-title">
       <% if @snake.user == current_user %>
-        <div class="snake-tab">
-          <%= link_to "View snake", snake_path(@snake), class: "btn btn-danger edit-snake" %>
-          <%= link_to "Edit Snake", edit_snake_path(@snake), class: "btn btn-success" %>
+        <div class="show-tabs">
+          <div class="show-buffer"></div>
+          <% edit_snake = "<h3>Edit Snake</h3>" %>
+          <% bookings_snake = "<h3>Snake's Bookings</h3>" %>
+          <% view_snake = "<h3>View Snake</h3>" %>
+          <%= link_to view_snake.html_safe, snake_path(@snake), class: "show-tab view-tab" %>
+          <%= link_to edit_snake.html_safe, edit_snake_path(@snake), class: "show-tab edit-tab" %>
+          <%= link_to bookings_snake.html_safe, snake_bookings_path(@snake), class: "show-tab bookings-tab", id: "current-tab" %>
         </div>
       <% end %>
       <% if @snake.photo %>

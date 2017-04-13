@@ -14,12 +14,13 @@
   margin-bottom: 90px;
   background-color: $snake-backgroud-form;
   border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .show-photo {
   position: absolute;
   border-radius: 50%;
-  top: -150px;
+  top: -125px;
   left: -150px;
 }
 
@@ -69,7 +70,7 @@ html {
 }
 
 .show-name {
-  margin-top: 30px;
+  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -121,8 +122,5 @@ html {
   margin: 20px 0;
 }
 
-.snake-tab {
-  position: absolute;
-  top: -40px;
-  right: 0px;
-}
+
+
