@@ -1,3 +1,31 @@
+.the-footer {
+  margin-top: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(40, 40, 40);
+}
+
+.social-media-footer-box {
+  padding-left: 50px;
+  ul {
+    margin: 0;
+    font-size: 30px;
+    li {
+      padding: 0px 16px;
+      a {
+        color: white;
+        &:hover {
+          text-decoration: none;
+          color: $brand-color;
+        }
+      }
+    }
+  }
+}
+
+
 footer {
   text-align: center;
   justify-content: center;

@@ -1,27 +1,77 @@
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12">
+<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(70, 173, 114, 0.3) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861510/king-snake-snake-banded-red-47310_zjcc99.jpg');">
+	<div class="banner-content">
+		<h1>Snakes</h1>
+	</div>
+</div>
 
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
       <%= simple_form_for :search,  url: snakes_path , :method => :get do |f| %>
-      <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons %>
-      <%= f.input :price, collection: @prices,  required: false   %>
-      <%= f.submit "Catch a Snake!", class: "btn btn-warning"  %>
+        <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons %>
+        <%= f.input :price, collection: @prices,  required: false   %>
+        <%= f.submit "Catch a Snake!", class: "btn btn-warning"  %>
       <% end %>
+
       <% if @snakes.blank? %>
         <h4>There are no snakes matching your search terms.</h4>
       <% end %>
 
+			<% @snakes.each do |snake| %>
+			<% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
+			<%= link_to snake_path(snake) do %>
+			<div class="card col-xs-12 col-sm-12" style="background-image: url(<%= image_url %>)">
+				<ul class ="ul-no-bullets">
+					<div class="card-category">
+						<li><p><%= snake.name %></p>
+						</li>
+					</div>
+					<div class="card-user">
 
-      <div class="text-center">
-      <h1>Index All Snakes Public</h1>
-        <ul class ="ul-no-bullets">
-          <% @snakes.each do |snake| %>
-            <li><%= link_to snake.name, snake_path(snake) %></li>
-          <% end %>
-        </ul>
-        <%= link_to "Return Home", root_path, class: "btn btn-success" %>
-        <%= link_to "Search Again", snakes_path, class: "btn btn-success" %>
-      </div>
-    </div>
-  </div>
+
+						<%#= if @snake.user == current_user %>
+
+						<%# avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+						<%# x =  "<a href=\"/users/#{current_user.id}\">" %>
+						<%#= x.html_safe %>
+						<%#= image_tag avatar_url, class: "avatar" %>
+						<%# end %>
+					</div>
+					<div class="card-description">
+						<li><%= snake.breed %></li>
+						<li><p><%= snake.sex %></p></li>
+					</div>
+					<div class="card-price">
+						<li><%= "#{snake.price}" + "$" %></li>
+					</div>
+				</ul>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
+<div class="container text-center">
+	<%= link_to "Return Home", root_path, class: "btn btn-success" %>
+  <%= link_to "Search Again", snakes_path, class: "btn btn-success" %>
+      </div>
+</div>
+</div>
+
+
+
+<style>
+
+  .navbar-wagon {
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    box-shadow: 0 0 0 0 !important;
+    width: 100%;
+  }
+
+  .session {
+    color: white;
+  }
+
+</style>
+

@@ -1,17 +1,50 @@
-<div class="new-snake-form">
-  <div>
-    <h2>Edit Your Snake</h2>
+<div class="show-wrapper">
+  <div class="show-container">
+    <div class="picture-title">
+      <% if @snake.user == current_user %>
+        <div class="show-tabs">
+          <div class="show-buffer"></div>
+          <% edit_snake = "<h3>Edit Snake</h3>" %>
+          <% bookings_snake = "<h3>Snake's Bookings</h3>" %>
+          <% view_snake = "<h3>View Snake</h3>" %>
+          <%= link_to view_snake.html_safe, snake_path(@snake), class: "show-tab view-tab" %>
+          <%= link_to edit_snake.html_safe, edit_snake_path(@snake), class: "show-tab edit-tab", id: "current-tab" %>
+          <%= link_to bookings_snake.html_safe, snake_bookings_path(@snake), class: "show-tab bookings-tab" %>
+        </div>
+      <% end %>
+      <% if @snake.photo %>
+        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <% end %>
+      <div class="show-name">
+        <h1><%= @snake.name %></h1>
+      </div>
+    </div>
+    <div class="book-button">
+      <% unless @snake.user == current_user %>
+        <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <div class="show-details">
+      <div class="edit-snake-form">
+        <div>
+          <h2>Edit Your Snake</h2>
+        </div>
+        <%= simple_form_for @snake do |i| %>
+          <%= i.error_notification %>
+          <%= i.input :name, required: true, autofocus: true %>
+          <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
+          <%= i.input :breed, required: true, autofocus: true %>
+          <%= i.input :price, required: true, autofocus: true %>
+          <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
+          <%= i.input :photo, as: :attachinary %>
+          <%= i.submit %>
+        <% end %>
+        <br>
+        <br>
+        <%= link_to "Delete your snake", snake_path(@snake), class: "btn btn-danger", method: :delete %>
+      </div>
+    </div>
   </div>
-  <%= simple_form_for @snake do |i| %>
-    <%= i.error_notification %>
-    <%= i.input :name, required: true, autofocus: true %>
-    <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
-    <%= i.input :breed, required: true, autofocus: true %>
-    <%= i.input :price, required: true, autofocus: true %>
-    <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
-    <%= i.input :photo, as: :attachinary %>
-    <%= i.submit %>
-  <% end %>
-  <br>
-  <%= link_to "Delete your snake", snake_path(@snake), class: "btn btn-danger", method: :delete %>
 </div>
+
+

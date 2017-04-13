@@ -1,9 +1,10 @@
 .banner {
   color: white;
   text-align: center;
-  height: 55vh;
+  flex-direction: column;
+  height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,4 +20,15 @@
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
+}
+
+.index-banner{
+  color: white;
+  text-align: center;
+  height: 45vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

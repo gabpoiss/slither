@@ -22,6 +22,12 @@ class SnakesController < ApplicationController
 
   def show
     @snake = Snake.find(params[:id])
+
+    if !Review.where(:user => current_user).nil?
+      @review = Review.where(:user => current_user)
+    else
+      @review = Review.new
+    end
   end
 
   def new
@@ -75,6 +81,8 @@ class SnakesController < ApplicationController
   end
 
   def user_show
+    current_user.snakes_booked_notifications = 0
+    current_user.save
     @user = User.find(params[:user_id])
     unless @user == current_user
       redirect_to user_path(current_user)

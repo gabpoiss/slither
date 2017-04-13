@@ -12,20 +12,23 @@
 <div class="navbar-wagon-right hidden-xs hidden-sm">
 
   <% if current_user %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link session" %>
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
     <% x =  "<a href=\"/users/#{current_user.id}\">" %>
     <%= x.html_safe %>
-      <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+      <div class="badge-container">
+        <div class="badge badge-red"><%= total_notifications(current_user) unless total_notifications(current_user).zero? %></div>
+        <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+      </div>
     </a>
     <a href="/snakes/new" class="navbar-wagon-item navbar-wagon-button btn">Add a snake</a>
   <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link session" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link session" %>
   <% end %>
   <!-- Notification link-->
 <!-- Button (call-to-action) -->
-<a href="/snakes" class="navbar-wagon-item navbar-wagon-button btn">Rent a snake</a>
+<a href="/snakes" class="navbar-wagon-item navbar-wagon-button btn">View snakes</a>
 </div>
 <!-- Dropdown appearing on mobile only -->
 <div class="navbar-wagon-item hidden-md hidden-lg">

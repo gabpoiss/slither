@@ -21,11 +21,15 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @snake_id = params[:snake_id]
   end
 
   def create
+    date_from = Date.strptime(params[:booking][:from].gsub("/", "-"), '%m-%d-%Y')
+    date_until = Date.strptime(params[:booking][:until].gsub("/", "-"), '%m-%d-%Y')
+
     snake = Snake.find(params[:snake_id])
-    new_booking = Booking.new(booking_params)
+    new_booking = Booking.new(from: date_from, until: date_until)
     new_booking.confirmed = nil
     new_booking.snake = snake
     new_booking.user = current_user
@@ -33,9 +37,11 @@ class BookingsController < ApplicationController
       # once the the snake book page has been built out.
       # redirect_to snake_booking_path(new_booking)
       # until then:
+      snake.user.snakes_booked_notifications += 1
+      snake.user.save
       redirect_to snake_path(snake)
     else
-      redirect_to snake(snake)
+      redirect_to snake_path(snake)
     end
   end
 
@@ -53,6 +59,8 @@ class BookingsController < ApplicationController
     booker = booking.user
     if snake_owner == current_user
       booking.update(confirmed: true)
+      booker.bookings_responses_notification += 1
+      booker.save
     elsif booker = current_user
       booking.update(booking_params)
     end
@@ -72,6 +80,8 @@ class BookingsController < ApplicationController
   end
 
   def user_show
+    current_user.bookings_responses_notification = 0
+    current_user.save
     @user = User.find(params[:user_id])
     unless @user == current_user
       redirect_to user_path(current_user)

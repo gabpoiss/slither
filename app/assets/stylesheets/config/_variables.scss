@@ -3,6 +3,8 @@
  * ------------------------------------- */
 // Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url("https://fonts.googleapis.com/css?family=Arsenal:400,700");
+
 $base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 
@@ -32,3 +34,28 @@ $yellow: #FDB631;
 $orange: #E67E22;
 $green: #32B796;
 $gray: #000000;
+
+$snake-backgroud-form: #F2F2F2;
+$snake-backgroud: #ffffff;
+
+$snake-color: #EE5F5B;
+
+$snake-h1-font: "Helvetica";
+$snake-h1-size: 40px;
+$snake-h1-color: black;
+
+$snake-h2-font: "Helvetica";
+$snake-h2-size: 30px;
+$snake-h2-color: black;
+
+$snake-h3-font: "Helvetica";
+$snake-h3-size: 20px;
+$snake-h3-color: black;
+
+$snake-font-font: "Arsenal";
+$snake-font-size: 16px;
+$snake-font-color: black;
+
+$navbar_btn_color: rgba(70, 209, 114, 0.3);
+$navbar_btn_color_hover: rgba(70, 163, 114, 0.3);
+

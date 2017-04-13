@@ -36,9 +36,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :username
       t.string :first_name
       t.string :last_name
-      t.string :bio
+      t.text :bio
       t.float :lat
       t.float :lng
+      t.integer :snakes_booked_notifications, default: 0
+      t.integer :bookings_responses_notification, default: 0
     end
 
     add_index :users, :email,                unique: true

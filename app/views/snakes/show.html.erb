@@ -1,62 +1,99 @@
-<div class="snake-show-wrapper">
-  <div class="snake-photo-name-wrapper">
-    <div class="snake-photo-name">
-      <div class="snake-photo">
-        <% if @snake.photo? %>
-          <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill %>
-        <% end %>
-      </div>
-      <div class="snake-name">
+<div class="show-wrapper">
+  <div class="show-container">
+    <div class="picture-title">
+      <% if @snake.user == current_user %>
+        <div class="show-tabs">
+          <div class="show-buffer"></div>
+          <% edit_snake = "<h3>Edit Snake</h3>" %>
+          <% bookings_snake = "<h3>Snake's Bookings</h3>" %>
+          <% view_snake = "<h3>View Snake</h3>" %>
+          <%= link_to view_snake.html_safe, snake_path(@snake), class: "show-tab view-tab", id: "current-tab" %>
+          <%= link_to edit_snake.html_safe, edit_snake_path(@snake), class: "show-tab edit-tab" %>
+          <%= link_to bookings_snake.html_safe, snake_bookings_path(@snake), class: "show-tab bookings-tab" %>
+        </div>
+      <% end %>
+      <% if @snake.photo %>
+      <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <% end %>
+      <div class="show-name">
         <h1><%= @snake.name %></h1>
       </div>
     </div>
-  </div>
-  <div class="snake-details-wrapper">
-    <div class="snake-details-box">
-      <div class="snake-attr-wrapper">
-        <div class="snake-attr-rows">
-          <p>Breed:</p>
-          <p id="snake-breed"><%= @snake.breed %></p>
-          <% if @snake.breed.length > 17 %>
-            <style>
-              #snake-breed {
-                font-size: 20px;
-              }
-            </style>
-          <% elsif @snake.breed.length > 10 %>
-            <style>
-              #snake-breed {
-                font-size: 25px;
-              }
-            </style>
-          <% end %>
-        </div>
-        <div class="snake-attr-rows">
-          <p>Sex:</p>
-          <p><%= @snake.sex %></p>
-        </div>
-        <div class="snake-attr-rows">
-          <p>Rate:</p>
-          <p><%= @snake.price %></p>
-        </div>
+    <div class="book-button">
+      <% if @snake.user != current_user && have_not_booked(@snake)%>
+      <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% elsif @snake.user != current_user && have_not_booked(@snake) == false %>
+      <em><h3>You've Booked This Snake!</h3></em>
+      <% end %>
+    </div>
+    <div class="show-details">
+      <div class="detail-div">
+        <h2>Breed:</h2>
+        <h3 id="snake-breed"><%= @snake.breed %></h3>
+        <% if @snake.breed.length > 17 %>
+        <style>
+          #snake-breed {
+            font-size: 20px;
+          }
+        </style>
+        <% elsif @snake.breed.length > 10 %>
+        <style>
+          #snake-breed {
+            font-size: 25px;
+          }
+        </style>
+        <% end %>
       </div>
-      <div class="snake-show-button-wrapper">
-        <div class="snake-show-btn-box">
-          <% if @snake.user == current_user %>
-            <%= link_to "Edit your snake", edit_snake_path, class: "btn btn-success" %>
-            <%= link_to "View your snake's bookings", snake_bookings_path(@snake), class: "btn btn-primary" %>
-          <% elsif current_user %>
-            <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
-          <% else %>
-            <h3>Log in or sign up to book snakes</h3>
-          <% end %>
-        </div>
+      <div class="detail-div">
+        <h2>Sex:</h2>
+        <h3><%= @snake.sex %></h3>
       </div>
+      <div class="detail-div">
+        <h2>Price:</h2>
+        <h3><%= @snake.price %></h3>
+      </div>
+      <div class="detail-div">
+        <h2>Owner:</h2>
+        <h3><%= link_to @snake.user.username, user_path(@snake.user) %></h3>
+      </div>
+      <div class="booking-info">
+        <% if current_user %>
+        <%= link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
+        <br>
+        <!-- If this snake is booked by this current_user, display the review form
+      -->
+
+
+      <% if @snake.bookings == current_user.bookings %>
+      <!-- Do This Block -->
+      <% if @review == nil %>
+        <%= simple_form_for [@snake, @review] do |f| %>
+          <%= f.input :content %>
+          <%= f.input :stars %>
+          <%= f.submit "add a review", class: "btn btn-primary"   %>
+          <% end %>
+      <% else %>
+        <% @review.each do |r| %>
+          <p><%= r.content %></p>
+          <p><%= r.stars %> stars</p>
+        <% end %>
+        <% end %>
+      <% end %>
+
+
+      <% else %>
+      <em><h3>Log in or sign up to book snakes</h3></em>
+      <% end %>
     </div>
   </div>
-  <div class="see-more-snakes-button">
-    <%= link_to "See more snakes", snakes_path, class: "btn btn-danger" %>
-  </div>
 </div>
+</div>
+
+
+<%#= render 'reviews/form', snake: @snake, review: @review %>
+
+
+
+
 
 

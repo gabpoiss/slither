@@ -1,45 +1,56 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1492089324/striking_z2szfv.gif');">
-  <div class="banner-content">
-    <h1>Slitherzzz</h1>
-    <p>SSSSSSSSSSSSSSSSSSSnake</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(70, 173, 114, 0.3) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861510/king-snake-snake-banded-red-47310_zjcc99.jpg');">
+  <div>
+    <h1 id="title">
+      <% if current_user %>
+        WELCOME BACK,
+        <%= current_user.first_name.upcase %>
+      <% else %>
+        SLITHERZZZZ
+      <% end %>
+    </h1>
+  </div>
+  <div>
+    <h2 id="subtitle">Rent Snakes With Us</h2>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861468/grass-snake-snake-serpentes-natrix-80474_wkjbt9.jpg');">
-        <div class="card-category">
-          <h1>Mamba</h1>
+    <div class="col-xs-12 col-sm-4 home-card">
+      <a href="">
+        <div class="snake-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861468/grass-snake-snake-serpentes-natrix-80474_wkjbt9.jpg');">
+          <h1>Vipers</h1>
         </div>
-
-
-      </div>
+      </a>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861567/snake-animal-nature-toxic-46500_ywyjze.jpg');">
-        <div class="card-category">
-          <h1>Serpent à sonette!</h1>
+    <div class="col-xs-12 col-sm-4 home-card">
+      <a href="/snakes">
+        <div class="snake-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861567/snake-animal-nature-toxic-46500_ywyjze.jpg');">
+          <h1>VIEW ALL OUR SNAKES</h1>
         </div>
-
-
-      </div>
-
-
+      </a>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861610/snake-rainbow-boa-reptile-scale_eqmahe.jpg');">
-        <div class="card-category">
-          <h1>Cobra</h1>
+    <div class="col-xs-12 col-sm-4 home-card">
+      <a href="">
+        <div class="snake-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861610/snake-rainbow-boa-reptile-scale_eqmahe.jpg');">
+          <h1>Cobras</h1>
         </div>
-
-
-      </div>
-
-      </div>
+      </a>
     </div>
   </div>
 </div>
 
+<style>
+
+  .navbar-wagon {
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    box-shadow: 0 0 0 0 !important;
+    width: 100%;
+  }
+
+  .session {
+    color: white;
+  }
+
+</style>

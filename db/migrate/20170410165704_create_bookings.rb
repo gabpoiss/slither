@@ -4,8 +4,8 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :snake, foreign_key: true
       t.boolean :confirmed
-      t.datetime :from
-      t.datetime :until
+      t.date :from
+      t.date :until
 
       t.timestamps
     end
