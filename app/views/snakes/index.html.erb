@@ -4,19 +4,21 @@
 	</div>
 </div>
 
-<div class="wrapper text-center">
+<div class="wrapper">
 	<div class="container">
 		<div class="row">
 			<% @snakes.each do |snake| %>
-			<% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card-link")  %>
+			<% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
 			<%= link_to snake_path(snake) do %>
-			<div class="card col-xs-12 col-sm-4" style="background-image: url(<%= image_url %>)">
+			<div class="card col-xs-12 col-sm-12" style="background-image: url(<%= image_url %>)">
 				<ul class ="ul-no-bullets">
 					<div class="card-category">
 						<li><p><%= snake.name %></p>
 						</li>
 					</div>
 					<div class="card-user">
+
+
 						<%#= if @snake.user == current_user %>
 
 						<%# avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
