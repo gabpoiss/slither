@@ -4,8 +4,8 @@
       <div class="show-tabs">
         <% my_profile = "<h3>My Profile</h3>" %>
         <% edit_profile = "<h3>Edit Profile</h3>" %>
-        <% my_bookings = "<h3>My Bookings</h3>" %>
-        <% my_snakes = "<h3>My Snakes</h3>" %>
+        <% my_bookings = "<h3>My Bookings #{booking_responses_notifications(current_user)}</h3>" %>
+        <% my_snakes = "<h3>My Snakes #{snakes_booked_notifications(current_user)} </h3>" %>
         <%= link_to my_profile.html_safe, user_path(@user), class: "show-tab my-tab" %>
         <%= link_to edit_profile.html_safe, edit_user_registration_path, class: "show-tab edit-tab" %>
         <%= link_to my_bookings.html_safe, user_bookings_path(@user), class: "show-tab my-bookings-tab", id: "current-tab" %>

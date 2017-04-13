@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170411151430) do
     t.integer  "user_id"
     t.integer  "snake_id"
     t.boolean  "confirmed"
-    t.datetime "from"
-    t.datetime "until"
+    t.date     "from"
+    t.date     "until"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["snake_id"], name: "index_bookings_on_snake_id", using: :btree
@@ -68,24 +68,26 @@ ActiveRecord::Schema.define(version: 20170411151430) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                           default: "", null: false
+    t.string   "encrypted_password",              default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "bio"
+    t.text     "bio"
     t.float    "lat"
     t.float    "lng"
+    t.integer  "snakes_booked_notifications",     default: 0
+    t.integer  "bookings_responses_notification", default: 0
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"

@@ -37,6 +37,8 @@ class BookingsController < ApplicationController
       # once the the snake book page has been built out.
       # redirect_to snake_booking_path(new_booking)
       # until then:
+      snake.user.snakes_booked_notifications += 1
+      snake.user.save
       redirect_to snake_path(snake)
     else
       redirect_to snake_path(snake)
@@ -57,6 +59,8 @@ class BookingsController < ApplicationController
     booker = booking.user
     if snake_owner == current_user
       booking.update(confirmed: true)
+      booker.bookings_responses_notification += 1
+      booker.save
     elsif booker = current_user
       booking.update(booking_params)
     end
@@ -76,6 +80,8 @@ class BookingsController < ApplicationController
   end
 
   def user_show
+    current_user.bookings_responses_notification = 0
+    current_user.save
     @user = User.find(params[:user_id])
     unless @user == current_user
       redirect_to user_path(current_user)
