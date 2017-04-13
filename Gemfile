@@ -6,6 +6,7 @@ gem 'puma'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
+gem 'sunspot_rails'
 
 gem 'devise'
 gem 'figaro'

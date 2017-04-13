@@ -5,10 +5,10 @@
   <%= simple_form_for Snake.new do |i| %>
     <%= i.error_notification %>
     <%= i.input :name, required: true, autofocus: true %>
-    <%= i.input :sex, collection: ["Male", "Female", "Unknown"], required: true, autofocus: true %>
+    <%= i.input :sex, required: true, autofocus: true %>
     <%= i.input :breed, required: true, autofocus: true %>
     <%= i.input :price, required: true, autofocus: true %>
-    <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent imediately" %>
+    <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
     <%= i.input :photo, as: :attachinary %>
     <%= i.submit %>
   <% end %>

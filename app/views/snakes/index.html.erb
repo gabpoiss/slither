@@ -1,9 +1,44 @@
-<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(70, 173, 114,0.6) 50%), url('https://img.clipartfox.com/41ae2ca010239733a6ee136773a2c4b1_amazon-forest-amazon-forest-clipart_1440-900.jpeg');">
 
+<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(70, 173, 114, 0.3) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861510/king-snake-snake-banded-red-47310_zjcc99.jpg');">
+	<div class="banner-content">
+		<h1>Snakes</h1>
+	</div>
 </div>
 
-<div class="text-center index-title">
-  <h1>Rent Your Snake</h1>
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+      <%= simple_form_for :search,  url: snakes_path , :method => :get do |f| %>
+        <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons %>
+        <%= f.input :price, collection: @prices,  required: false   %>
+        <%= f.submit "Catch a Snake!", class: "btn btn-warning"  %>
+      <% end %>
+
+      <% if @snakes.blank? %>
+        <h4>There are no snakes matching your search terms.</h4>
+      <% end %>
+
+			<% @snakes.each do |snake| %>
+			<% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
+			<%= link_to snake_path(snake) do %>
+			<div class="card col-xs-12 col-sm-12" style="background-image: url(<%= image_url %>)">
+				<ul class ="ul-no-bullets">
+					<div class="card-category">
+						<li><p><%= snake.name %></p>
+						</li>
+					</div>
+					<div class="card-user">
+
+
+
+						<%#= if @snake.user == current_user %>
+
+</div>
+<div class="container text-center">
+	<%= link_to "Return Home", root_path, class: "btn btn-success" %>
+  <%= link_to "Search Again", snakes_path, class: "btn btn-success" %>
+      </div>
+
 </div>
 
 <div class="wrapper margin-up">
