@@ -17,6 +17,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 
+gem 'nokogiri'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

@@ -35,3 +35,25 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 }
+
+.snake-filter {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.snake-filter-form-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  label {
+    padding: 0px 10px 0px 0px;
+  }
+}
+
+#search_price_lower {
+  width: 100px;
+}
+
+#search_price_upper {
+  width: 100px;
+}
