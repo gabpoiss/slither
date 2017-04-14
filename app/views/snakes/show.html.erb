@@ -16,7 +16,7 @@
       </div>
       <% end %>
       <% if @snake.photo %>
-        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
       <% end %>
       <div class="show-name">
         <h1><%= @snake.name %></h1>
@@ -27,9 +27,9 @@
       <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
       <% elsif @snake.user != current_user && have_not_booked(@snake) == false %>
 
-        <em><h3>You've Booked This Snake!</h3></em>
+      <em><h3>You've Booked This Snake!</h3></em>
       <% elsif current_user == false %>
-        <em><h3>Log in or sign up to book snakes</h3></em>
+      <em><h3>Log in or sign up to book snakes</h3></em>
 
       <% end %>
     </div>
@@ -66,44 +66,44 @@
       <div class="booking-info">
 
 
-      <%#= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@snake.address}" %>
+        <%#= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@snake.address}" %>
         <h3>
-        <%= pluralize @snake.reviews.size, "review" %>
+          <%= pluralize @snake.reviews.size, "review" %>
         </h3>
 
         <div id="reviews">
         <% if @snake.reviews.blank? %>
-        Be the first to leave a review for <%= @snake.name %>
+              Be the first to leave a review for <%= @snake.name %>
           <% else %>
-          <% @snake.reviews.each do |review| %>
-          <%= render 'reviews/show', review: review %>
+            <% @snake.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
           <% end %>
           <% end %>
         </div>
 
-        <% if current_user %>
-        <%# link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
-          <br>
-          <% if @snake.bookings == current_user.bookings %>
-            <% if @reviews.empty? %>
-              <%= render 'reviews/form', snake: @snake, review: @review %>
+          <% if current_user %>
+          <%# link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
+              <br>
+            <% if @snake.bookings == current_user.bookings %>
+              <% if @reviews.empty? %>
+                <%= render 'reviews/form', snake: @snake, review: @review %>
+              <% end %>
             <% end %>
+          <% else %>
+              <em><h3>Log in or sign up to book snakes</h3></em>
           <% end %>
-        <% else %>
-          <em><h3>Log in or sign up to book snakes</h3></em>
-        <% end %>
 
-      <% end %>
+
+      </div>
     </div>
   </div>
 </div>
-</div>
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @snake_coordinates.to_json %>;
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var coord = <%= raw @snake_coordinates.to_json %>;
+});
+<% end %>
 <% end %>
 
 
