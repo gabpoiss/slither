@@ -60,6 +60,7 @@
                   <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, crop: :fit, class: "card- link")  %>
                   <%= link_to snake_path(snake) do %>
                     <div class="card temp" style="background-image: url(<%= image_url %>)">
+                      <div class="card-opacity"></div>
                       <div class="card-category">
                         <h2><%= snake.name %></h2>
                       </div>
