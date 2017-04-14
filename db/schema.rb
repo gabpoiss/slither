@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170414030758) do
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
-    t.bio      "bio"
+    t.text     "bio"
     t.integer  "snakes_booked_notifications",     default: 0
     t.integer  "bookings_responses_notification", default: 0
     t.string   "provider"
