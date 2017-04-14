@@ -14,9 +14,13 @@
         <%= link_to my_bookings.html_safe, user_bookings_path(@user), class: "show-tab my-bookings-tab", id: "current-tab" %>
         <%= link_to my_snakes.html_safe, user_snakes_path(@user), class: "show-tab my-snakes-tab" %>
       </div>
-      <% if @user.facebook_picture_url %>
-        <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
-      <% end %>
+      <div class="user-profile-picture">
+        <% if @user.facebook_picture_url %>
+          <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
+          <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small" %>
+          <%# cl_image_tag @user.facebook_picture_url, crop: :fill %>
+        <% end %>
+      </div>
       <div class="show-name">
         <h1><%= @user.username %></h1>
       </div>

@@ -6,15 +6,17 @@
     <div class="booking-details text-center">
       <% if @booking.snake.user == current_user %>
         <% if @booking.confirmed == true %>
-        <p><%= link_to @booking.user.username, user_path(@booking.user) %> has booked <%= @booking.snake.name %></p>
-        <p>From: <%= @booking.from %></p>
-        <p>Until: <%= @booking.until %></p>
+        <h2><%= link_to @booking.user.username, user_path(@booking.user) %> has booked <%= @booking.snake.name %></h2>
+        <p>From: <%= @booking.from.strftime('%a %d %b %Y') %></p>
+        <p>Until: <%= @booking.until.strftime('%a %d %b %Y') %></p>
         <% elsif @booking.confirmed == nil %>
           <p><%= link_to @booking.user.username, user_path(@booking.user) %> would like to book <%= @booking.snake.name %></p>
           <p>From: <%= @booking.from %></p>
           <p>Until: <%= @booking.until %></p>
-          <%= link_to "Confirm Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :patch %>
-          <%= link_to "Deny Booking", snake_booking_path(@booking.snake, @booking), class: "btn btn-danger", method: :delete %>
+          <% puts "@booking.snake_id = #{@booking.snake_id}" %>
+          <% puts "@booking.id = #{@booking.id}" %>
+          <%= link_to "Confirm Booking", "/snakes/#{@booking.snake_id}/bookings/#{@booking.id}", class: "btn btn-danger", method: :patch %>
+          <%= link_to "Deny Booking", "/snakes/#{@booking.snake_id}/bookings/#{@booking.id}", class: "btn btn-danger", method: :delete %>
         <% else %>
           <p>You shouldn't be seeing this</p>
         <% end %>

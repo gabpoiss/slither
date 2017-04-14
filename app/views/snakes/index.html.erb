@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row">
       <%= simple_form_for :search,  url: snakes_path , :method => :get, class: "form-inline" do |f| %>
-        <%= f.input :sex, collection: [" Male", " Female", " Unknown"],  required: false, as: :radio_buttons, label: "Sex: " %>
+        <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons, label: "Sex: " %>
         <%= f.input :price, collection: @prices,  required: false   %>
         <%= f.submit "Catch a Snake!", class: "btn btn-danger"  %>
       <% end %>
@@ -36,7 +36,6 @@
     }
   }
 
-
 </style>
 
 
@@ -58,9 +57,10 @@
               <div class="col-xs-12 col-sm-4">
                 <% snake = @snakes[j] %>
                 <% unless snake.nil? %>
-                  <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
+                  <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, crop: :fit, class: "card- link")  %>
                   <%= link_to snake_path(snake) do %>
                     <div class="card temp" style="background-image: url(<%= image_url %>)">
+                      <div class="card-opacity"></div>
                       <div class="card-category">
                         <h2><%= snake.name %></h2>
                       </div>

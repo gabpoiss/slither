@@ -15,9 +15,11 @@
         <%= link_to my_bookings.html_safe, user_bookings_path(@user), class: "show-tab my-bookings-tab" %>
         <%= link_to my_snakes.html_safe, user_snakes_path(@user), class: "show-tab my-snakes-tab", id: "current-tab" %>
       </div>
-      <% if @user.facebook_picture_url %>
-        <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
-      <% end %>
+      <div class="user-profile-picture">
+        <% if @user.facebook_picture_url %>
+          <%= cl_image_tag @user.facebook_picture_url, crop: :fill %>
+        <% end %>
+      </div>
       <div class="show-name">
         <h1>Your Snakes</h1>
       </div>
@@ -29,14 +31,16 @@
         <p>You have no snakes!</p>
         <%= link_to "... add some", new_snake_path, class: "btn btn-danger" %>
       <% else %>
-        <% @user.snakes.order(:updated_at).reverse.each do |i| %>
-          <div class="ubd">
+        <% snakes = @user.snakes %>
+        <% snakes = snakes.sort_by { |snake| snake.bookings.count } %>
+        <% snakes.reverse.each do |i| %>
+          <div class="my-snakes-card">
             <% if i.photo %>
-              <div>
-                <%= cl_image_tag i.photo.path, width: 150, height: 150, crop: :fill, class: "user-snakes-avater" %>
+              <div class="my-snake-photo">
+                <%= cl_image_tag i.photo.path, width: 150, height: 150, crop: :fill, class: "my-snake-avater" %>
               </div>
             <% end %>
-            <div class="user-booking-details">
+            <div class="my-snake-details">
               <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
               <% if i.bookings.count.zero? %>
                 <p>No bookings</p>

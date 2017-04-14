@@ -23,10 +23,10 @@
       </div>
     </div>
     <div class="book-button">
-      <% if @snake.user != current_user && have_not_booked(@snake)%>
-      <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <% if @snake.user != current_user && have_not_booked(@snake) && current_user%>
+        <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
       <% elsif @snake.user != current_user && have_not_booked(@snake) == false %>
-      <em><h3>You've Booked This Snake!</h3></em>
+        <em><h3>You've Booked This Snake!</h3></em>
       <% end %>
     </div>
     <div class="show-details">

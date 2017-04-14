@@ -15,12 +15,23 @@
   height: 25vh;
 }
 
-
 .index-title {
   h1{
     font-family: $snake-h1-font;
     font-size: 60px;
     color: $snake-h1-color;
     margin: 50px 0;
+  }
+}
+
+.card-opacity {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }
