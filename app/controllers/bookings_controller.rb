@@ -65,7 +65,7 @@ class BookingsController < ApplicationController
       booking.update(booking_params)
     end
     if booking.valid?
-      redirect_to snake_booking_path(booking)
+      redirect_to snake_booking_path(booking.snake, booking)
     else
       redirect_to edit_snake_path(booking)
     end
