@@ -5,51 +5,31 @@
   <h1>Rent Your Snake</h1>
 </div>
 
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <%= simple_form_for :search,  url: snakes_path , :method => :get, class: "form-inline" do |f| %>
-        <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons, label: "Sex: " %>
-        <%= f.input :price, collection: @prices,  required: false   %>
-        <%= f.submit "Catch a Snake!", class: "btn btn-danger"  %>
-      <% end %>
-      <% if @snakes.blank? %>
-        <h4>There are no snakes matching your search terms.</h4>
-      <% end %>
-      </div>
+<div class="snake-filter">
+  <%= simple_form_for :search,  url: snakes_path , :method => :get, html: {class: 'form-inline'} do |f| %>
+    <div class="snake-filter-form-items">
+      <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, label: "Sex:" %>
+      <%= f.input :address, label: "Address:" %>
+      <%= f.input :proximity, collection: [10, 25, 50, 100, 1000], label: "Within (km): " %>
+      <%= f.input :price_lower, as: :integer, required: false, label: "Min" %>
+      <%= f.input :price_upper, as: :integer, required: false, label: "Max" %>
+      <%= f.submit "Catch a Snake!", class: "btn btn-danger"  %>
     </div>
+  <% end %>
+  <% if @snakes.blank? %>
+    <h4>There are no snakes matching your search terms.</h4>
+  <% end %>
   </div>
 </div>
-
-<style>
-
-  .search {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  label {
-    padding: 0 10px;
-    input {
-      padding: 0 5px;
-    }
-  }
-
-</style>
-
-
-<script>
-  $(document).ready(function(){
-    $(".radio_buttons").addClass("form-inline");
-  });
-</script>
-
-
 
 
 <div class="wrapper margin-up">
   <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="map" style="width: 100%; height: 400px; margin: 30px auto;"></div>
+      </div>
+    </div>
     <% for i in 0...@snakes.length do %>
       <% if i % 3 == 0 %>
           <div class="row">
@@ -83,6 +63,26 @@
     <% end %>
   </div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
 
 
 <style>

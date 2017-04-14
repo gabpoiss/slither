@@ -4,6 +4,8 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require underscore
+//= require gmaps/google
 //= require bootstrap-datepicker
 //= require_tree .
 
