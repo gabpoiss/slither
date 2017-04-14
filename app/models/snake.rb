@@ -10,6 +10,7 @@
   validates :available, presence: true
   validates :breed, presence: true
   has_attachment :photo
+  after_validation :geocode, if: :address_changed?
 
 
   # We need a validator to make sure the price is greater than zero

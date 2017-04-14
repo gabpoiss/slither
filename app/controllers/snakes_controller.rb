@@ -3,11 +3,22 @@ class SnakesController < ApplicationController
 
   def index
 
-    if current_user
-      @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
-    else
-      @snakes = Snake.all.order(price: :desc)
+    @snakes = Snake.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@snakes) do |snake, marker|
+      marker.lat snake.latitude
+      marker.lng snake.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
+
+#     @snakes = Snake.order(price: :desc)
+
+#     if current_user
+#       @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
+#     else
+#       @snakes = Snake.all.order(price: :desc)
+#     end
+
       if params[:search]&& params[:search][:sex].present?
       @snakes = @snakes.where(sex: params[:search][:sex])
     end
@@ -27,7 +38,8 @@ class SnakesController < ApplicationController
 
   def show
     @snake = Snake.find(params[:id])
-
+    @alert_message = "You are viewing #{@snake.name}"
+    @snake_coordinates = { lat: @snake.latitude, lng: @snake.longitude }
     if !Review.where(:user => current_user).nil?
       @review = Review.where(:user => current_user)
     else
@@ -95,6 +107,6 @@ class SnakesController < ApplicationController
   end
 
   def snake_params
-    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo, :term)
+    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo, :address)
   end
 end
