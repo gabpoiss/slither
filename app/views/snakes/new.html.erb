@@ -11,8 +11,13 @@
     <%= i.input :sex, required: true, autofocus: true %>
     <%= i.input :breed, required: true, autofocus: true %>
     <%= i.input :price, required: true, autofocus: true %>
+    <%= f.input :address %>
     <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
     <%= i.input :photo, as: :attachinary %>
     <%= i.submit %>
   <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
+<% end %>

@@ -84,6 +84,14 @@
   </div>
 </div>
 </div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var coord = <%= raw @snake_coordinates.to_json %>;
+    });
+  <% end %>
+<% end %>
+
 
 
 <%#= render 'reviews/form', snake: @snake, review: @review %>
