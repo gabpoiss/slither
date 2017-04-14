@@ -16,7 +16,9 @@
       </div>
       <div class="user-profile-picture">
         <% if @user.facebook_picture_url %>
-          <%= cl_image_tag @user.facebook_picture_url, crop: :fill %>
+          <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
+          <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small" %>
+          <%# cl_image_tag @user.facebook_picture_url, crop: :fill %>
         <% end %>
       </div>
       <div class="show-name">
