@@ -31,7 +31,9 @@
         <p>You have no snakes!</p>
         <%= link_to "... add some", new_snake_path, class: "btn btn-danger" %>
       <% else %>
-        <% @user.snakes.order(:updated_at).reverse.each do |i| %>
+        <% snakes = @user.snakes %>
+        <% snakes = snakes.sort_by { |snake| snake.bookings.count } %>
+        <% snakes.reverse.each do |i| %>
           <div class="my-snakes-card">
             <% if i.photo %>
               <div class="my-snake-photo">
