@@ -31,12 +31,19 @@ class SnakesController < ApplicationController
 
   def show
     @snake = Snake.find(params[:id])
-    @alert_message = "You are viewing #{@snake.name}"
-    @snake_coordinates = { lat: @snake.latitude, lng: @snake.longitude }
-    if !Review.where(:user => current_user).nil?
-      @review = Review.where(:user => current_user)
-    else
+
+    @reviews = @snake.reviews
+    if Review.where(user: current_user, snake: @snake).last.nil?
+
+#     @alert_message = "You are viewing #{@snake.name}"
+#     @snake_coordinates = { lat: @snake.latitude, lng: @snake.longitude }
+#     if !Review.where(:user => current_user).nil?
+#       @review = Review.where(:user => current_user)
+#     else
+
       @review = Review.new
+    else
+      @review = Review.where(user: current_user, snake: @snake).last
     end
   end
 

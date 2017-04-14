@@ -1,0 +1,6 @@
+<%= simple_form_for([snake, review], remote: true) do |form| %>
+  <%= form.input :content %>
+  <%= form.input :stars %>
+  <%= form.button :submit %>
+<% end %>
+

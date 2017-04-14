@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :snakes do
     resources :bookings
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :show]
   end
   #   resources :bookings do
   #   resources :reviews, only: [:new, :create]
