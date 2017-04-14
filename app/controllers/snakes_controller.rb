@@ -3,7 +3,11 @@ class SnakesController < ApplicationController
 
   def index
 
-    @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
+    if current_user
+      @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
+    else
+      @snakes = Snake.all.order(price: :desc)
+    end
       if params[:search]&& params[:search][:sex].present?
       @snakes = @snakes.where(sex: params[:search][:sex])
     end
