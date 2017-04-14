@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgb(40, 40, 40);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .social-media-footer-box {
@@ -25,38 +28,8 @@
   }
 }
 
-
-footer {
-  text-align: center;
-  justify-content: center;
-  margin-top: 15px;
-  height: 25vh;
-  background-image: url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491880115/footerskin_q3uuwl.jpg');
+html {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 100px;
 }
-
-.btn-social-icon {
-  color:yellow;
-  font-size: 75px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-social-icon:hover {
-  color:red;
-}
-
-.footer-text {
-  justify-content: center;
-  align-items: center;
-  color:orange;
-  font-size: 55px;
-}
-
-.footer-number {
-  color:red;
-  font-size: 55px;
-  font-weight: bold;
-}
-
-
