@@ -16,7 +16,7 @@
         </div>
       <% end %>
       <% if @snake.photo %>
-      <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
       <% end %>
       <div class="show-name">
         <h1><%= @snake.name %></h1>
@@ -27,6 +27,8 @@
         <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
       <% elsif @snake.user != current_user && have_not_booked(@snake) == false %>
         <em><h3>You've Booked This Snake!</h3></em>
+      <% elsif current_user == false %>
+        <em><h3>Log in or sign up to book snakes</h3></em>
       <% end %>
     </div>
     <div class="show-details">
@@ -77,8 +79,6 @@
             <% end %>
           <% end %>
         <% end %>
-      <% else %>
-        <em><h3>Log in or sign up to book snakes</h3></em>
       <% end %>
     </div>
   </div>

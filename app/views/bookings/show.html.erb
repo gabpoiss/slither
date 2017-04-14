@@ -6,13 +6,14 @@
     <div class="booking-details text-center">
       <% if @booking.snake.user == current_user %>
         <% if @booking.confirmed == true %>
-        <h2><%= link_to @booking.user.username, user_path(@booking.user) %> has booked <%= @booking.snake.name %></h2>
-        <p>From: <%= @booking.from.strftime('%a %d %b %Y') %></p>
-        <p>Until: <%= @booking.until.strftime('%a %d %b %Y') %></p>
+          <h2><%= link_to @booking.user.username, user_path(@booking.user) %> has booked <%= @booking.snake.name %></h2>
+          <br>
+          <p>From: <%= @booking.from.strftime('%a %d %b %Y') %></p>
+          <p>Until: <%= @booking.until.strftime('%a %d %b %Y') %></p>
         <% elsif @booking.confirmed == nil %>
           <p><%= link_to @booking.user.username, user_path(@booking.user) %> would like to book <%= @booking.snake.name %></p>
-          <p>From: <%= @booking.from %></p>
-          <p>Until: <%= @booking.until %></p>
+          <p>From: <%= @booking.from.strftime('%a %d %b %Y') %></p>
+          <p>Until: <%= @booking.until.strftime('%a %d %b %Y') %></p>
           <% puts "@booking.snake_id = #{@booking.snake_id}" %>
           <% puts "@booking.id = #{@booking.id}" %>
           <%= link_to "Confirm Booking", "/snakes/#{@booking.snake_id}/bookings/#{@booking.id}", class: "btn btn-danger", method: :patch %>
@@ -22,11 +23,12 @@
         <% end %>
       <% elsif @booking.user%>
         <% if @booking.confirmed == true %>
-          <p>Your booking of <%= @booking.snake.name %> has been confirmed</p>
-          <p>From: <%= @booking.from %></p>
-          <p>Until: <%= @booking.until %></p>
+          <h2>Your booking of <%= @booking.snake.name %> has been confirmed</h2>
+          <br>
+          <p>From: <%= @booking.from.strftime('%a %d %b %Y') %></p>
+          <p>Until: <%= @booking.until.strftime('%a %d %b %Y') %></p>
         <% elsif @booking.confirmed == nil %>
-          <p>Your booking of <%= @booking.snake.name %> has yet to be confirmed by <%= link_to @booking.snake.user.username, user_path(@booking.snake.user) %></p>
+          <h2>Your booking of <%= @booking.snake.name %> has yet to be confirmed by <%= link_to @booking.snake.user.username, user_path(@booking.snake.user) %></h2>
         <% else %>
           <p>You shouldn't be seeing this</p>
         <% end %>
