@@ -71,6 +71,7 @@ html {
 .show-name {
   margin-top: 60px;
   margin-bottom: 20px;
+  margin-right: 55px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -150,27 +151,4 @@ html {
   }
   height: 23vh;
   margin-bottom: 95px;
-}
-
-.ubd{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-  margin: 20px 0px;
-  padding: 20px 70px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.user-booking-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin-left: 30px;
-}
-
-.user-snakes-avater {
-  border-radius: 50%;
 }

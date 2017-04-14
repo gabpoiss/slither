@@ -14,17 +14,19 @@
         <%= link_to my_bookings.html_safe, user_bookings_path(@user), class: "show-tab my-bookings-tab" %>
         <%= link_to my_snakes.html_safe, user_snakes_path(@user), class: "show-tab my-snakes-tab" %>
       </div>
-      <% if @user.facebook_picture_url %>
-        <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
-      <% end %>
+      <div class="user-profile-picture">
+        <% if @user.facebook_picture_url %>
+          <%= cl_image_tag @user.facebook_picture_url, crop: :fill %>
+        <% end %>
+      </div>
       <div class="show-name">
         <h1><%= @user.username %></h1>
       </div>
     </div>
     <div class="show-details">
       <div class="user-details-box">
-        <h3>Full Name:</h3>
-        <p class="name"><%= @user.first_name %> <%= @user.last_name %></p>
+        <h3>Full Name: <%= @user.first_name %> <%= @user.last_name %></h3>
+        <br>
         <h3>Bio:</h3>
         <p class="bio"><%= @user.bio %></p>
       </div>

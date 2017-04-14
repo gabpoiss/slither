@@ -8,7 +8,7 @@
   <%= simple_form_for Snake.new do |i| %>
     <%= i.error_notification %>
     <%= i.input :name, required: true, autofocus: true %>
-    <%= i.input :sex, required: true, autofocus: true %>
+    <%= i.input :sex, required: true, autofocus: true, collection: ["Male", "Female", "Unknown"] %>
     <%= i.input :breed, required: true, autofocus: true %>
     <%= i.input :price, required: true, autofocus: true %>
     <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
