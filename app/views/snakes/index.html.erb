@@ -1,9 +1,3 @@
-<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(70, 173, 114, 0.3) 50%), url('http://res.cloudinary.com/dxvq7itog/image/upload/v1491861510/king-snake-snake-banded-red-47310_zjcc99.jpg');">
-	<div class="banner-content">
-		<h1>Snakes</h1>
-	</div>
-</div>
-
 <div class="wrapper">
 	<div class="container">
 		<div class="row">
@@ -30,32 +24,51 @@
 
 
 						<%#= if @snake.user == current_user %>
+=======
+<div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(70, 173, 114,0.6) 50%), url('https://img.clipartfox.com/41ae2ca010239733a6ee136773a2c4b1_amazon-forest-amazon-forest-clipart_1440-900.jpeg');">
+>>>>>>> master
 
-						<%# avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-						<%# x =  "<a href=\"/users/#{current_user.id}\">" %>
-						<%#= x.html_safe %>
-						<%#= image_tag avatar_url, class: "avatar" %>
-						<%# end %>
-					</div>
-					<div class="card-description">
-						<li><%= snake.breed %></li>
-						<li><p><%= snake.sex %></p></li>
-					</div>
-					<div class="card-price">
-						<li><%= "#{snake.price}" + "$" %></li>
-					</div>
-				</ul>
-			</div>
-			<% end %>
-			<% end %>
-		</div>
-	</div>
 </div>
-<div class="container text-center">
-	<%= link_to "Return Home", root_path, class: "btn btn-success" %>
-  <%= link_to "Search Again", snakes_path, class: "btn btn-success" %>
-      </div>
+
+
+=======
+
+<div class="text-center index-title">
+  <h1>Rent Your Snake</h1>
+>>>>>>> master
 </div>
+
+<div class="wrapper margin-up">
+  <div class="container">
+    <% for i in 0...@snakes.length do %>
+      <% if i % 3 == 0 %>
+          <div class="row">
+            <% for j in i..(i + 2) do %>
+              <div class="col-xs-12 col-sm-4">
+                <% snake = @snakes[j] %>
+                <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
+                <%= link_to snake_path(snake) do %>
+                  <div class="card temp" style="background-image: url(<%= image_url %>)">
+                    <div class="card-category">
+                      <h2><%= snake.name %></h2>
+                    </div>
+                    <div class="card-user">
+                    </div>
+                    <div class="card-description">
+                      <h3><%= snake.breed %></h3>
+                      <p><%= snake.sex %></p>
+                    </div>
+                    <div class="card-price">
+                      <%= "#{snake.price}" + "$" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 
@@ -74,4 +87,5 @@
   }
 
 </style>
+
 
