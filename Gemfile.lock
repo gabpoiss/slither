@@ -272,6 +272,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   listen (~> 3.0.5)
+  nokogiri
   omniauth-facebook
   pg
   pry-byebug

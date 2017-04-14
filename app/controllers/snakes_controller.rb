@@ -3,36 +3,29 @@ class SnakesController < ApplicationController
 
   def index
 
-    @snakes = Snake.where.not(latitude: nil, longitude: nil)
+    @snakes = Snake.all
 
-    @hash = Gmaps4rails.build_markers(@snakes) do |snake, marker|
+    if current_user
+      @snakes = @snakes.where.not(user_id: current_user.id).order(price: :desc)
+    end
+
+    if params[:search]
+      if params[:search][:address].present? && params[:search][:proximity].present?
+        @snakes = Snake.near(params[:search][:address], params[:search][:proximity].to_i)
+      end
+      if params[:search][:sex].present?
+        @snakes = @snakes.where(sex: params[:search][:sex])
+      end
+      if params[:search][:price_lower].present? && params[:search][:price_upper].present?
+        @snakes = @snakes.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
+      end
+    end
+
+    @geo_snakes = @snakes.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@geo_snakes) do |snake, marker|
       marker.lat snake.latitude
       marker.lng snake.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-
-#     @snakes = Snake.order(price: :desc)
-
-#     if current_user
-#       @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
-#     else
-#       @snakes = Snake.all.order(price: :desc)
-#     end
-
-      if params[:search]&& params[:search][:sex].present?
-      @snakes = @snakes.where(sex: params[:search][:sex])
-    end
-      if params[:search] && params[:search][:price].present?
-      @snakes = @snakes.where(price: params[:search][:price])
-    end
-
-
-    snake_prices = []
-    Snake.all.each do |snake|
-      snake_prices << snake.price
-    end
-
-    @prices = snake_prices.uniq.sort
 
   end
 
