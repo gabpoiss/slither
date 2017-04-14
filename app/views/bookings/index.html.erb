@@ -30,12 +30,12 @@
           <div class="a-booking">
             <% if i.confirmed == true %>
               <h2><%= link_to i.user.username, user_path(i.user) %> has booked <%= i.snake.name %></h2>
-              <p>From: <%= i.from %></p>
-              <p>Until: <%= i.until %></p>
+              <p>From: <%= i.from.strftime('%a %d %b %Y') %></p>
+              <p>Until: <%= i.until.strftime('%a %d %b %Y') %></p>
             <% elsif i.confirmed == nil %>
               <h2><%= link_to i.user.username, user_path(i.user) %> would like to book <%= i.snake.name %></h2>
-              <p>From: <%= i.from %></p>
-              <p>Until: <%= i.until %></p>
+              <p>From: <%= i.from.strftime('%a %d %b %Y') %></p>
+              <p>Until: <%= i.until.strftime('%a %d %b %Y') %></p>
               <p>Pending you confirmation</p>
             <% else %>
               <p>You shouldn't be seeing this</p>
