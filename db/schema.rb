@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 20170414030758) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "bio"
-    t.float    "lat"
-    t.float    "lng"
+    t.integer  "snakes_booked_notifications",     default: 0
+    t.integer  "bookings_responses_notification", default: 0
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
