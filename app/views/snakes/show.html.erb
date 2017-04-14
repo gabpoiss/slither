@@ -5,18 +5,18 @@
   <div class="show-container">
     <div class="picture-title">
       <% if @snake.user == current_user %>
-        <div class="show-tabs">
-          <div class="show-buffer"></div>
-          <% edit_snake = "<h3>Edit Snake</h3>" %>
-          <% bookings_snake = "<h3>Snake's Bookings</h3>" %>
-          <% view_snake = "<h3>View Snake</h3>" %>
-          <%= link_to view_snake.html_safe, snake_path(@snake), class: "show-tab view-tab", id: "current-tab" %>
-          <%= link_to edit_snake.html_safe, edit_snake_path(@snake), class: "show-tab edit-tab" %>
-          <%= link_to bookings_snake.html_safe, snake_bookings_path(@snake), class: "show-tab bookings-tab" %>
-        </div>
+      <div class="show-tabs">
+        <div class="show-buffer"></div>
+        <% edit_snake = "<h3>Edit Snake</h3>" %>
+        <% bookings_snake = "<h3>Snake's Bookings</h3>" %>
+        <% view_snake = "<h3>View Snake</h3>" %>
+        <%= link_to view_snake.html_safe, snake_path(@snake), class: "show-tab view-tab", id: "current-tab" %>
+        <%= link_to edit_snake.html_safe, edit_snake_path(@snake), class: "show-tab edit-tab" %>
+        <%= link_to bookings_snake.html_safe, snake_bookings_path(@snake), class: "show-tab bookings-tab" %>
+      </div>
       <% end %>
       <% if @snake.photo %>
-        <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
+      <%= cl_image_tag @snake.photo.path, width: 300, height: 300, crop: :fill, class: "show-photo" %>
       <% end %>
       <div class="show-name">
         <h1><%= @snake.name %></h1>
@@ -24,11 +24,13 @@
     </div>
     <div class="book-button">
       <% if @snake.user != current_user && have_not_booked(@snake) && current_user%>
-        <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
+      <%= link_to "Book snake", new_snake_booking_path(@snake), class: "btn btn-danger" %>
       <% elsif @snake.user != current_user && have_not_booked(@snake) == false %>
-        <em><h3>You've Booked This Snake!</h3></em>
+
+      <em><h3>You've Booked This Snake!</h3></em>
       <% elsif current_user == false %>
-        <em><h3>Log in or sign up to book snakes</h3></em>
+      <em><h3>Log in or sign up to book snakes</h3></em>
+
       <% end %>
     </div>
     <div class="show-details">
@@ -62,39 +64,52 @@
         <h3><%= link_to @snake.user.username, user_path(@snake.user) %></h3>
       </div>
       <div class="booking-info">
-      <% if current_user %>
-        <%# link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
-        <br>
-        <% if @snake.bookings == current_user.bookings %>
-          <% if @review == nil %>
-            <%= simple_form_for [@snake, @review] do |f| %>
-              <%= f.input :content %>
-              <%= f.input :stars %>
-              <%= f.submit "add a review", class: "btn btn-danger"   %>
+
+
+        <%#= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@snake.address}" %>
+        <h3>
+          <%= pluralize @snake.reviews.size, "review" %>
+        </h3>
+
+        <div id="reviews">
+        <% if @snake.reviews.blank? %>
+              Be the first to leave a review for <%= @snake.name %>
+          <% else %>
+            <% @snake.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
+          <% end %>
+          <% end %>
+        </div>
+
+          <% if current_user %>
+          <%# link_to "My Snakes", user_snakes_path(current_user), class: "btn btn-danger" %>
+              <br>
+            <% if @snake.bookings == current_user.bookings %>
+              <% if @reviews.empty? %>
+                <%= render 'reviews/form', snake: @snake, review: @review %>
+              <% end %>
             <% end %>
           <% else %>
-            <% @review.each do |r| %>
-              <p><%= r.content %></p>
-              <p><%= r.stars %> stars</p>
-            <% end %>
+              <em><h3>Log in or sign up to book snakes</h3></em>
           <% end %>
-        <% end %>
-      <% end %>
+
+
+      </div>
     </div>
   </div>
 </div>
-</div>
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @snake_coordinates.to_json %>;
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var coord = <%= raw @snake_coordinates.to_json %>;
+});
+<% end %>
 <% end %>
 
 
 
-<%#= render 'reviews/form', snake: @snake, review: @review %>
+
+
 
 
 
