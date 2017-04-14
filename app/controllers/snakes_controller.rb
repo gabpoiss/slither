@@ -18,7 +18,7 @@ class SnakesController < ApplicationController
 #     else
 #       @snakes = Snake.all.order(price: :desc)
 #     end
-  
+
       if params[:search]&& params[:search][:sex].present?
       @snakes = @snakes.where(sex: params[:search][:sex])
     end
@@ -107,6 +107,6 @@ class SnakesController < ApplicationController
   end
 
   def snake_params
-    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo, :location)
+    params.require(:snake).permit(:name, :breed, :sex, :available, :price, :photo, :address)
   end
 end
