@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170414030758) do
     t.integer  "user_id"
     t.integer  "snake_id"
     t.boolean  "confirmed"
-    t.datetime "from"
-    t.datetime "until"
+    t.date "from"
+    t.date "until"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["snake_id"], name: "index_bookings_on_snake_id", using: :btree
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170414030758) do
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "bio"
+    t.bio      "bio"
     t.integer  "snakes_booked_notifications",     default: 0
     t.integer  "bookings_responses_notification", default: 0
     t.string   "provider"
