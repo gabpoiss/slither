@@ -7,6 +7,7 @@ gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'sunspot_rails'
+gem "geocoder"
 
 gem 'devise'
 gem 'figaro'
