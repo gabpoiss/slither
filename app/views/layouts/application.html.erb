@@ -9,14 +9,21 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%=  favicon_link_tag("snake----16-214285_owk7kw.png") %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body>
     <%= render "shared/navbar" %>
     <%# render "shared/flash" %>
-    <%= javascript_include_tag 'application' %>
+
     <%= yield %>
     <%= cloudinary_js_config %>
     <%= render "shared/footer" %>
+
+    <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_MAPS_BROWSER_KEY']}" %>
+    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+    <%= yield(:after_js) %>
+
   </body>
 </html>
 

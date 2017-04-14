@@ -7,6 +7,7 @@ gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'sunspot_rails'
+gem "geocoder"
 
 gem 'devise'
 gem 'figaro'
@@ -25,11 +26,16 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem 'bootstrap-datepicker-rails'
+gem 'gmaps4rails', '~> 2.1'
 
 # Faker
 gem 'faker'
 
 gem 'omniauth-facebook'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'
