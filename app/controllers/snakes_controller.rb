@@ -23,11 +23,11 @@ class SnakesController < ApplicationController
 
   def show
     @snake = Snake.find(params[:id])
-
-    if !Review.where(:user => current_user).nil?
-      @review = Review.where(:user => current_user)
-    else
+    @reviews = @snake.reviews
+    if Review.where(user: current_user, snake: @snake).last.nil?
       @review = Review.new
+    else
+      @review = Review.where(user: current_user, snake: @snake).last
     end
   end
 
