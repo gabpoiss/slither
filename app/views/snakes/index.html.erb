@@ -57,7 +57,7 @@
               <div class="col-xs-12 col-sm-4">
                 <% snake = @snakes[j] %>
                 <% unless snake.nil? %>
-                  <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, width: 100, height: 150, crop: :fill, :gravity => :face, class: "card- link")  %>
+                  <% image_url = snake.photo.nil? ? image_path("th.jpeg") : cl_image_path(snake.photo.path, crop: :fit, class: "card- link")  %>
                   <%= link_to snake_path(snake) do %>
                     <div class="card temp" style="background-image: url(<%= image_url %>)">
                       <div class="card-category">
