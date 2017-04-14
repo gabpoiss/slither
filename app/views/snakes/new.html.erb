@@ -13,6 +13,7 @@
     <%= i.input :price, required: true, autofocus: true %>
     <%= i.input :address %>
     <%= i.input :available, as: :select, required: true, autofocus: true, label: "Available for rent immediately" %>
+    <%= i.input :address, required: true, autofocus: true %>
     <%= i.input :photo, as: :attachinary %>
     <%= i.submit %>
   <% end %>
