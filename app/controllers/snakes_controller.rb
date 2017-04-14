@@ -2,7 +2,8 @@ class SnakesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @snakes = Snake.order(price: :desc)
+
+    @snakes = Snake.where.not(user_id: current_user.id).order(price: :desc)
       if params[:search]&& params[:search][:sex].present?
       @snakes = @snakes.where(sex: params[:search][:sex])
     end
