@@ -1,4 +1,3 @@
-
 <div class="index-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(70, 173, 114,0.6) 50%), url('https://img.clipartfox.com/41ae2ca010239733a6ee136773a2c4b1_amazon-forest-amazon-forest-clipart_1440-900.jpeg');">
 </div>
 
@@ -9,21 +8,46 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <%= simple_form_for :search,  url: snakes_path , :method => :get do |f| %>
-        <%= f.input :sex, collection: ["Male", "Female", "Unknown"],  required: false, as: :radio_buttons %>
+      <%= simple_form_for :search,  url: snakes_path , :method => :get, class: "form-inline" do |f| %>
+        <%= f.input :sex, collection: [" Male", " Female", " Unknown"],  required: false, as: :radio_buttons, label: "Sex: " %>
         <%= f.input :price, collection: @prices,  required: false   %>
-        <%= f.submit "Catch a Snake!", class: "btn btn-warning"  %>
+        <%= f.submit "Catch a Snake!", class: "btn btn-danger"  %>
       <% end %>
       <% if @snakes.blank? %>
         <h4>There are no snakes matching your search terms.</h4>
       <% end %>
-
-         <%= link_to "Return Home", root_path, class: "btn btn-success" %>
-         <%= link_to "Search Again", snakes_path, class: "btn btn-success" %>
-       </div>
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  label {
+    padding: 0 10px;
+    input {
+      padding: 0 5px;
+    }
+  }
+
+
+</style>
+
+
+<script>
+  $(document).ready(function(){
+    $(".radio_buttons").addClass("form-inline");
+  });
+</script>
+
+
+
 
 <div class="wrapper margin-up">
   <div class="container">
@@ -68,10 +92,6 @@
     position: absolute;
     box-shadow: 0 0 0 0 !important;
     width: 100%;
-  }
-
-  .session {
-    color: white;
   }
 
 </style>

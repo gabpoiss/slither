@@ -8,7 +8,6 @@
 
 .show-container {
   min-width: 300px;
-  margin-top: 180px;
   margin-left: 180px;
   margin-right: 180px;
   margin-bottom: 90px;
@@ -71,6 +70,7 @@ html {
 
 .show-name {
   margin-top: 60px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -83,7 +83,7 @@ html {
 }
 
 .show-details {
-  max-width: 400px;
+  // max-width: 400px;
   margin-top: 20px;
   padding: 5px 10px;
   padding-left: 20px;
@@ -95,6 +95,7 @@ html {
   }
   h3 {
     margin-top: 10px;
+    margin-bottom: 30px;
     font-family :$snake-h3-font;
     font-size: $snake-h3-size;
     color: $snake-h3-color;
@@ -122,5 +123,54 @@ html {
   margin: 20px 0;
 }
 
+.show-banner {
+  h1{
+    font-family: $snake-h1-font;
+    font-size: 60px;
+    color: white
+  }
+  height: 45vh;
+}
 
+.user-banner {
+  h1{
+    font-family: $snake-h1-font;
+    font-size: 60px;
+    color: white
+  }
+  height: 30vh;
+  margin-bottom: 95px;
+}
 
+.form-banner {
+  h1{
+    font-family: $snake-h1-font;
+    font-size: 60px;
+    color: white
+  }
+  height: 23vh;
+  margin-bottom: 95px;
+}
+
+.ubd{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  margin: 20px 0px;
+  padding: 20px 70px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.user-booking-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.user-snakes-avater {
+  border-radius: 50%;
+}

@@ -13,8 +13,8 @@
   <body>
     <%= render "shared/navbar" %>
     <%# render "shared/flash" %>
-    <%= yield %>
     <%= javascript_include_tag 'application' %>
+    <%= yield %>
     <%= cloudinary_js_config %>
     <%= render "shared/footer" %>
   </body>

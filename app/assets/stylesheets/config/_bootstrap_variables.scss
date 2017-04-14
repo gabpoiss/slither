@@ -23,3 +23,14 @@ $brand-warning:   $orange;
 $border-radius-base:  2px;
 $border-radius-large: 2px;
 $border-radius-small: 2px;
+
+$brand-danger: rgba(30, 30, 30, 0);
+
+.btn-danger {
+  border-radius: 20em !important;
+  padding: 0px 20px !important;
+  line-height: 40px !important;
+  border: 2px solid !important;
+  border-color: rgb(30, 30, 30) !important;
+  color: rgb(30, 30, 30) !important;
+}

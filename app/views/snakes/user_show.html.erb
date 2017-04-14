@@ -1,3 +1,7 @@
+<div class="user-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(70, 173, 114,0.6) 50%), url('https://img.clipartfox.com/41ae2ca010239733a6ee136773a2c4b1_amazon-forest-amazon-forest-clipart_1440-900.jpeg');">
+</div>
+
+
 <div class="show-wrapper">
   <div class="show-container">
     <div class="picture-title">
@@ -15,25 +19,44 @@
         <%= cl_image_tag @user.facebook_picture_url, width: 300, height: 300, crop: :fill %>
       <% end %>
       <div class="show-name">
-        <h1><%= @user.username %></h1>
+        <h1>Your Snakes</h1>
       </div>
     </div>
-    <div class="show-details">
-      <h3>Your Snakes</h3>
+    <div class="show-details text-center">
       <% if @user.snakes.count.zero? %>
         <br>
         <br>
         <p>You have no snakes!</p>
         <%= link_to "... add some", new_snake_path, class: "btn btn-danger" %>
       <% else %>
-        <% @user.snakes.each do |i| %>
-          <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
-          <p>Number of bookings: <%= i.bookings.count %></p>
-          <br>
+        <% @user.snakes.order(:updated_at).reverse.each do |i| %>
+          <div class="ubd">
+            <% if i.photo %>
+              <div>
+                <%= cl_image_tag i.photo.path, width: 150, height: 150, crop: :fill, class: "user-snakes-avater" %>
+              </div>
+            <% end %>
+            <div class="user-booking-details">
+              <p>Snake Name: <%= link_to i.name, snake_path(i) %></p>
+              <% if i.bookings.count.zero? %>
+                <p>No bookings</p>
+                <br>
+              <% else %>
+                <p>Number of bookings: <%= i.bookings.count %></p>
+                <%= link_to "View latest booking", snake_booking_path(i, i.bookings.order(:updated_at).reverse[0]), class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
 
+<style>
 
+.show-details {
+  width: 65% !important;
+}
+
+</style>
