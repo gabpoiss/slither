@@ -29,8 +29,6 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'gmaps4rails', '~> 2.1'
 
-gem "geocoder"
-
 
 # Faker
 gem 'faker'
